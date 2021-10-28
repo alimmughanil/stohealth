@@ -39,7 +39,8 @@
                             <th>Nama</th>
                             <th>Gejala</th>
                             <th>Indikasi Penyakit</th>
-                            <th>Data Pengguna</th>
+                            <th>Waktu Pemeriksaan</th>
+                            <th>Saran Dokter</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -49,11 +50,31 @@
                             <td>{{ $i++ }}</td>
                             <td>{{ $history['nama'] }}</td>
                             <td>{{ $history['gejala'] }}</td>
-                            <td>{{ $history['penyakit'] }}</td>
-                            <td>                            
-                                <button class="btn btn-primary">
-                                    Lihat
-                                </button>
+                            <td>{{ $history['indikasi_penyakit'] }}</td>
+                            <td>{{ $history['created_at'] }}</td>
+                            <td class="d-flex justify-content-center">                            
+                              <button type="button" class="btn btn-sm btn-primary userModal-showSaranDokter" data-toggle="modal" data-target="#modal-saranDokter" data-id="{{ $history['id'] }}">
+                                Lihat
+                              </button>
+                              <div class="modal fade" id="modal-saranDokter">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h4 class="modal-title">Saran Dokter</h4>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <div class="form-group">
+                                        <textarea class="form-control" id="showSaran_dokter" name="showSaran_dokter" rows="8"></textarea>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                              </div>
                             </td>
                         </tr>
                       @endforeach

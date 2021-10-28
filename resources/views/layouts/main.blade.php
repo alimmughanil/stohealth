@@ -70,12 +70,12 @@
                 <!-- Brand Logo -->
                 <a href="{{ url('admin') }}" class="brand-link">
                     <img
-                    src="/img/logo heartnalyze.svg"
+                    src="/img/default.png"
                     alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3"
                     style="opacity: 0.8"
                     />
-                    <span class="brand-text font-weight-light">{{ $data['title']; }}</span>
+                    <span class="brand-text font-weight-light">Stohealth</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -157,12 +157,12 @@
                 <!-- Brand Logo -->
                 <a href="{{ url('user') }}" class="brand-link">
                     <img
-                    src="/img/logo heartnalyze.svg"
+                    src="/img/default.png"
                     alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3"
                     style="opacity: 0.8"
                     />
-                    <span class="brand-text font-weight-light">{{ $data['title']; }}</span>
+                    <span class="brand-text font-weight-light">Stohealth</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -247,86 +247,6 @@
             @csrf
         </form>
 
-            <!-- Keterangan Modal -->
-            <div class="modal fade" id="keteranganModal" tabindex="-1" role="dialog" aria-labelledby="keteranganModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="keteranganModalLabel">Keterangan Penyakit</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <div class="card">
-                        <h2 class="card-header">
-                            <input type="text" readonly class="form-control-plaintext font-weight-bold" id="penyakit">
-                        </h2>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <textarea class="form-control" id="keterangan" name="keterangan" rows="8"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Edit Profil Modal -->
-            <div class="modal fade" id="editProfilModal" tabindex="-1" role="dialog" aria-labelledby="editProfilModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editProfilModalLabel">Update Data Profil</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/user/profile/edit" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label for="usernameProfile">Username</label>
-                                <input type="text" class="form-control" id="usernameProfile" name="username" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="nama">Nama</label>
-                                <input type="text" class="form-control" id="nama" name="nama">
-                            </div>
-                            <div class="form-group">
-                                <label for="tempat_lahir">Tempat, Tanggal Lahir</label>
-                                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir">
-                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
-                            </div>
-                            <div class="form-group">
-                                <label for="gender">Jenis Kelamin</label>
-                                <select class="form-control" name="gender" id="genderEdit">
-                                    <option value="Pria">Pria</option>
-                                    <option value="Wanita">Wanita</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="emailProfile">Email</label>
-                                <input type="text" class="form-control" id="emailProfile" name="email" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="alamatProfile">Alamat</label>
-                                <input type="text" class="form-control" id="alamatProfile" name="alamat">
-                            </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
             <!-- Lihat Profil Modal -->
             <div class="modal fade" id="lihatProfilModal" tabindex="-1" role="dialog" aria-labelledby="lihatProfilModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -378,10 +298,9 @@
             </div>
 
     <footer class="main-footer">
-        <div class="float-right d-none d-sm-block"><b>Version</b> 3.2.0-rc</div>
         <strong
-          >Copyright &copy; 2014-2021
-          <a href="https://adminlte.io">AdminLTE.io</a>.</strong
+          >Copyright &copy; 2021
+          <a href="{{ url('/') }}">Stohealth</a>.</strong
         >
         All rights reserved.
     </footer>
@@ -415,6 +334,7 @@
     <script src="/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/dist/js/demo.js"></script>
+    <script src="/js/script.js"></script>
     <!-- Page specific script -->
     <script>
       $(function () {
@@ -423,7 +343,7 @@
             responsive: true,
             lengthChange: false,
             autoWidth: false,
-            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            buttons: ["pdf", "print"],
           })
           .buttons()
           .container()

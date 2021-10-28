@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\DataDiri;
-use App\Models\DataPemeriksaan;
 use App\Models\DataPenyakit;
 use Illuminate\Http\Request;
+use App\Models\DataPemeriksaan;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -22,29 +23,51 @@ class UserController extends Controller
     }
     public function showProfile(DataDiri $dataDiri){
         $user = Auth::user();
-        $data = [
-            'title' => 'Data Diri',
-            'user_id' => $user->id,
-            'role' => $user->role,
-            'name' => $user->name,
-            'email' => $user->email,
-            'tempat_lahir' => 'tempat_lahir',
-            'tanggal_lahir' => 'tanggal_lahir',
-            'gender' => 'gender',
-            'alamat' => 'alamat',
-            'dataDiri' => $dataDiri::all(),
-        ];
-
+        $getDataDiri = $dataDiri->firstwhere('user_id', $user->id);
+        if (empty($getDataDiri)) {            
+            $data = [
+                'title' => 'Data Diri',
+                'user_id' => $user->id,
+                'role' => $user->role,
+                'name' => $user->name,
+                'email' => $user->email,
+                'birth_place' => '-',
+                'birth_date' => '-',
+                'gender' => '-',
+                'address' => '-',
+            ];
+        }
+        if (!empty($getDataDiri)) {            
+            $data = [
+                'title' => 'Data Diri',
+                'user_id' => $user->id,
+                'role' => $user->role,
+                'name' => $user->name,
+                'email' => $user->email,
+                'birth_place' => $getDataDiri->birth_place,
+                'birth_date' => $getDataDiri->birth_date,
+                'gender' => $getDataDiri->gender,
+                'address' => $getDataDiri->address,
+            ];
+        }
         return view('user.data-diri', compact('data'));
     }
     public function showHealthCheck(DataPenyakit $dataPenyakit){
         $user = Auth::user();
-        $data = [
-            'title' => 'Pemeriksaan Kesehatan',
-            'name' => $user->name,
-            'role' => $user->role,
-            'dataPenyakit' => $dataPenyakit::all()
-        ];
+        $dataDiri = new DataDiri;
+        $getDataDiri = $dataDiri->firstWhere('user_id', $user->id);
+        if (!empty($getDataDiri)) {            
+            $data = [
+                'title' => 'Pemeriksaan Kesehatan',
+                'id' => $user->id,
+                'name' => $user->name,
+                'role' => $user->role,
+                'dataPenyakit' => $dataPenyakit::all()
+            ];
+        }
+        elseif (empty($getDataDiri)) {
+            return redirect('/user/data-diri');
+        }
         return view('user.pemeriksaan-kesehatan', compact('data'));
     }
     public function showHistory(DataPemeriksaan $dataPemeriksaan){
@@ -57,5 +80,97 @@ class UserController extends Controller
         ];
 
         return view('user.data-pemeriksaan', compact('data'));
+    }
+    public function diagnose(Request $request){
+        $id = $request->idUser;
+        $gejala1 = $request->gejala1;
+        $gejala2 = $request->gejala2;
+        $gejala3 = $request->gejala3;
+        $gejala4 = $request->gejala4;
+        $dataPenyakit = new DataPenyakit;
+        $user = new User;
+        $dataUser = $user->firstWhere('id',$id);
+        if ($gejala1 && $gejala2 && $gejala3 && $gejala4) {
+            $getPenyakit = $dataPenyakit->firstWhere([
+                'gejala1' => $gejala1,
+                'gejala2' => $gejala2,
+                'gejala3' => $gejala3,
+                'gejala4' => $gejala4,
+            ],$gejala1);
+            if (!empty($getPenyakit->nama_penyakit)) {
+                $gejala = $gejala1 .', '. $gejala2 .', '. $gejala3 .', '.$gejala4;
+                $indikasiPenyakit = $getPenyakit->nama_penyakit;
+                $saranDokter = $getPenyakit->saran_dokter;
+            }
+            elseif (empty($getPenyakit->nama_penyakit)) {
+                $indikasiPenyakit = "Anda tidak terindikasi penyakit lambung";
+            }
+        }
+        elseif ($gejala1 || $gejala2 || $gejala3 || $gejala4) {
+            $gejala = $gejala1 . $gejala2 . $gejala3 . $gejala4;
+            $indikasiPenyakit = "Penyakit tidak teridentifikasi";
+            $saranDokter = "Jika kondisi memburuk, harap segera ke tenaga kesehatan terdekat";
+            
+        }
+        $dataPemeriksaan = DataPemeriksaan::create([
+            'user_id'=> $id,
+            'nama' => $dataUser->name,
+            'gejala' => $gejala,
+            'indikasi_penyakit' => $indikasiPenyakit,
+            'saran_dokter' => $saranDokter,
+        ]);
+
+        return redirect('/user/data-pemeriksaan');
+
+    }
+    public function getSaranDokter(DataPemeriksaan $dataPemeriksaan){
+        $id =  $_GET['id'];
+        $getData = $dataPemeriksaan->firstWhere('id', $id) ;
+        echo json_encode($getData);
+    }
+    public function getDataUser(DataDiri $dataDiri){
+        $id =  $_GET['id'];
+        $getData = $dataDiri->firstWhere('user_id', $id) ;
+        $dataUser = User::firstWhere('id', $id) ;
+        if (empty($getData)) {
+            echo json_encode($dataUser);
+        }
+        elseif (!empty($getData)) {
+            echo json_encode($getData);
+        }
+    }
+    public function destroy(DataDiri $dataDiri, $id){
+        $getId = $dataDiri->firstWhere('user_id', $id) ;
+        $getDataDiri = DataDiri::find($getId->id);
+        $delete = $getDataDiri->delete();
+        return redirect()->back();
+    }
+    public function update(Request $request, $id){
+        $dataDiri = new DataDiri;
+        $getDataDiri = $dataDiri->firstwhere('user_id',$id);
+        if(empty($getDataDiri)){
+            $save = DataDiri::create([
+                'user_id' => $id,
+                'name' => $request->name,
+                'email' => $request->email,
+                'birth_place' => $request->birth_place,
+                'birth_date' => $request->birth_date,
+                'gender' => $request->gender,
+                'address' => $request->address,
+            ]);
+        }
+        if(!empty($getDataDiri)){
+            $update = $dataDiri->where('user_id',$id)
+            ->update([
+                'user_id' => $id,
+                'name' => $request->name,
+                'email' => $request->email,
+                'birth_place' => $request->birth_place,
+                'birth_date' => $request->birth_date,
+                'gender' => $request->gender,
+                'address' => $request->address,
+            ]);
+        }
+        return redirect()->back();
     }
 }

@@ -68,7 +68,7 @@
                           </select>
                       </div>
                       <div class="mt-2">
-                          <button type="submit" class="btn btn-primary" name="namaUser" value="">Submit</button>
+                          <button type="submit" class="btn btn-primary" name="idUser" value="{{ $data['id']; }}">Submit</button>
                       </div>
                   </form>
                   </div>
