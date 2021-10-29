@@ -7,4 +7,5 @@ kedua, dilanjutkan menggunakan Git Bash:
 3. php artisan migrate
 4. php artisan db:seed
 5. php artisan serve
+<br>
 Terakhir, buka url http://localhost:8000/ di browser
