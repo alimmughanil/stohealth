@@ -7,6 +7,7 @@ use App\Models\DataDiri;
 use App\Models\DataPenyakit;
 use Illuminate\Http\Request;
 use App\Models\DataPemeriksaan;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,13 +57,21 @@ class UserController extends Controller
         $user = Auth::user();
         $dataDiri = new DataDiri;
         $getDataDiri = $dataDiri->firstWhere('user_id', $user->id);
+        $gejala1 = DB::table('data_penyakit')->distinct()->get('gejala1');
+        $gejala2 = DB::table('data_penyakit')->distinct()->get('gejala2');
+        $gejala3 = DB::table('data_penyakit')->distinct()->get('gejala3');
+        $gejala4 = DB::table('data_penyakit')->distinct()->get('gejala4');
+
         if (!empty($getDataDiri)) {            
             $data = [
                 'title' => 'Pemeriksaan Kesehatan',
                 'id' => $user->id,
                 'name' => $user->name,
                 'role' => $user->role,
-                'dataPenyakit' => $dataPenyakit::all()
+                'gejala1' => $gejala1,
+                'gejala2' => $gejala2,
+                'gejala3' => $gejala3,
+                'gejala4' => $gejala4,
             ];
         }
         elseif (empty($getDataDiri)) {

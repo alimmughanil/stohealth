@@ -77,10 +77,10 @@ class AdminController extends Controller
         
         DataPenyakit::create([
             'nama_penyakit' => $request['namaPenyakit'],
-            'gejala1' => $request['gejala1'],
-            'gejala2' => $request['gejala2'],
-            'gejala3' => $request['gejala3'],
-            'gejala4' => $request['gejala4'],
+            'gejala1' => strtolower($request['gejala1']),
+            'gejala2' => strtolower($request['gejala2']),
+            'gejala3' => strtolower($request['gejala3']),
+            'gejala4' => strtolower($request['gejala4']),
             'saran_dokter' => $request['saranDokter'],
         ]);
 
@@ -115,10 +115,10 @@ class AdminController extends Controller
         $update = $getDataPenyakit
         ->update([
             'nama_penyakit' => $request->namaPenyakit,
-            'gejala1' => $request->gejala1,
-            'gejala2' => $request->gejala2,
-            'gejala3' => $request->gejala3,
-            'gejala4' => $request->gejala4,
+            'gejala1' => strtolower($request['gejala1']),
+            'gejala2' => strtolower($request['gejala2']),
+            'gejala3' => strtolower($request['gejala3']),
+            'gejala4' => strtolower($request['gejala4']),
             'saran_dokter' => $request->saranDokter,
         ]);
 

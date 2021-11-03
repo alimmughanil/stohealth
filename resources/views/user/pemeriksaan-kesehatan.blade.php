@@ -35,8 +35,8 @@
                           <label for="gejala1">Gejala 1</label>
                           <select class="form-control" name="gejala1" id="gejala1">
                           <option value="">Tidak Ada</option>
-                          @foreach ($data['dataPenyakit'] as $gejala)
-                            <option value="{{ $gejala['gejala1'] }}">{{ $gejala['gejala1'] }}</option>
+                          @foreach ($data['gejala1'] as $item)
+                            <option value="{{ $item->gejala1 }}">{{$item->gejala1 }}</option>
                           @endforeach
                           </select>
                       </div>
@@ -44,8 +44,8 @@
                           <label for="gejala2">Gejala 2</label>
                           <select class="form-control" name="gejala2" id="gejala2">
                           <option value="">Tidak Ada</option>
-                          @foreach ($data['dataPenyakit'] as $gejala)
-                            <option value="{{ $gejala['gejala2'] }}">{{ $gejala['gejala2'] }}</option>
+                          @foreach ($data['gejala2'] as $item)
+                            <option value="{{ $item->gejala2 }}">{{$item->gejala2 }}</option>
                           @endforeach
                           </select>
                       </div>
@@ -53,8 +53,8 @@
                           <label for="gejala3">Gejala 3</label>
                           <select class="form-control" name="gejala3" id="gejala3">
                           <option value="">Tidak Ada</option>
-                          @foreach ($data['dataPenyakit'] as $gejala)
-                            <option value="{{ $gejala['gejala3'] }}">{{ $gejala['gejala3'] }}</option>
+                          @foreach ($data['gejala3'] as $item)
+                            <option value="{{ $item->gejala3 }}">{{$item->gejala3 }}</option>
                           @endforeach
                           </select>
                       </div>
@@ -62,8 +62,8 @@
                           <label for="gejala4">Gejala 4</label>
                           <select class="form-control" name="gejala4" id="gejala4">
                           <option value="">Tidak Ada</option>
-                          @foreach ($data['dataPenyakit'] as $gejala)
-                            <option value="{{ $gejala['gejala4'] }}">{{ $gejala['gejala4'] }}</option>
+                          @foreach ($data['gejala4'] as $item)
+                            <option value="{{ $item->gejala4 }}">{{$item->gejala4 }}</option>
                           @endforeach
                           </select>
                       </div>

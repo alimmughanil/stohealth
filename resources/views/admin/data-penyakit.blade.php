@@ -99,17 +99,17 @@
                           </div>
                       </div>
                       <div class="form-group row">
-                          <label for="saranDokter" class="col-md-4 col-form-label text-md-right">Saran Dokter</label>
+                        <label for="saranDokter" class="col-md-4 col-form-label text-md-right">Saran Dokter</label>
             
-                          <div class="col-md-6">
-                              <input id="saranDokter" type="text" class="form-control @error('saranDokter') is-invalid @enderror" name="saranDokter" value="{{ old('saranDokter') }}" required autocomplete="saranDokter">
-            
-                              @error('saranDokter')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
-                              @enderror
-                          </div>
+                        <div class="col-md-6">
+                            <textarea id="saranDokter" name="saranDokter" rows="6" class="form-control @error('saranDokter') is-invalid @enderror" name="saranDokter" value="{{ old('saranDokter') }}" required autocomplete="saranDokter"></textarea>
+
+                            @error('saranDokter')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                       </div>
             
                       <div class="col-md-6 offset-md-4">
