@@ -30,6 +30,8 @@
     />
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="/plugins/bs-stepper/css/bs-stepper.min.css">
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   </head>
   <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -335,29 +337,34 @@
     <!-- AdminLTE for demo purposes -->
     <script src="/dist/js/demo.js"></script>
     <script src="/js/script.js"></script>
+    <script src="/plugins/bs-stepper/js/bs-stepper.min.js"></script>
     <!-- Page specific script -->
     <script>
-      $(function () {
-        $("#example1")
-          .DataTable({
-            responsive: true,
+        $(function () {
+            $("#example1")
+            .DataTable({
+                responsive: true,
+                lengthChange: false,
+                autoWidth: false,
+                buttons: ["pdf", "print"],
+            })
+            .buttons()
+            .container()
+            .appendTo("#example1_wrapper .col-md-6:eq(0)");
+            $("#example2").DataTable({
+            paging: true,
             lengthChange: false,
+            searching: false,
+            ordering: true,
+            info: true,
             autoWidth: false,
-            buttons: ["pdf", "print"],
-          })
-          .buttons()
-          .container()
-          .appendTo("#example1_wrapper .col-md-6:eq(0)");
-        $("#example2").DataTable({
-          paging: true,
-          lengthChange: false,
-          searching: false,
-          ordering: true,
-          info: true,
-          autoWidth: false,
-          responsive: true,
+            responsive: true,
+            });
         });
-      });
+        // BS-Stepper Init
+        document.addEventListener('DOMContentLoaded', function () {
+            window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+        })
     </script>
   </body>
 </html>

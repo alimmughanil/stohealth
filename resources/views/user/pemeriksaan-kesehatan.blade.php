@@ -23,59 +23,111 @@
 
         <!-- Main content -->
         <section class="content">
-          <div class="container-fluid">
+          <div class="container">
             <div class="row justify-content-center">
-              <div class="col-6">
-                <div class="card">
-                  <h5 class="card-header">Pilih gejala yang anda alami!</h5>
-                  <div class="card-body">
-                    <form action="/user/pemeriksaan-kesehatan/save" method="POST" class="text-left">
-                      @csrf
-                      <div class="form-group">
-                          <label for="gejala1">Gejala 1</label>
-                          <select class="form-control" name="gejala1" id="gejala1">
-                          <option value="">Tidak Ada</option>
-                          @foreach ($data['gejala1'] as $item)
-                            <option value="{{ $item->gejala1 }}">{{$item->gejala1 }}</option>
-                          @endforeach
-                          </select>
-                      </div>
-                      <div class="form-group">
-                          <label for="gejala2">Gejala 2</label>
-                          <select class="form-control" name="gejala2" id="gejala2">
-                          <option value="">Tidak Ada</option>
-                          @foreach ($data['gejala2'] as $item)
-                            <option value="{{ $item->gejala2 }}">{{$item->gejala2 }}</option>
-                          @endforeach
-                          </select>
-                      </div>
-                      <div class="form-group">
-                          <label for="gejala3">Gejala 3</label>
-                          <select class="form-control" name="gejala3" id="gejala3">
-                          <option value="">Tidak Ada</option>
-                          @foreach ($data['gejala3'] as $item)
-                            <option value="{{ $item->gejala3 }}">{{$item->gejala3 }}</option>
-                          @endforeach
-                          </select>
-                      </div>
-                      <div class="form-group">
-                          <label for="gejala4">Gejala 4</label>
-                          <select class="form-control" name="gejala4" id="gejala4">
-                          <option value="">Tidak Ada</option>
-                          @foreach ($data['gejala4'] as $item)
-                            <option value="{{ $item->gejala4 }}">{{$item->gejala4 }}</option>
-                          @endforeach
-                          </select>
-                      </div>
-                      <div class="mt-2">
-                          <button type="submit" class="btn btn-primary" name="idUser" value="{{ $data['id']; }}">Submit</button>
-                      </div>
-                  </form>
+                <div class="col-sm-6">
+                  <div class="card card-default">
+                    <div class="card-header">
+                      <h3 class="card-title">Identifikasi Gejala</h3>
+                    </div>
+                    <div class="card-body p-0">
+                      <form action="/user/pemeriksaan-kesehatan/save" method="POST" class="text-left">
+                        @csrf
+                        <div class="form-group">
+                            <div class="bs-stepper">
+                              <div class="bs-stepper-header" role="tablist">
+                                <!-- your steps here -->
+                                <div class="step" data-target="#gejala1">
+                                  <button type="button" class="step-trigger" role="tab" aria-controls="gejala1" id="gejala1-trigger">
+                                    <span class="bs-stepper-circle">1</span>
+                                    <span class="bs-stepper-label"></span>
+                                  </button>
+                                </div>
+                                <div class="line"></div>
+                                <div class="step" data-target="#gejala2">
+                                  <button type="button" class="step-trigger" role="tab" aria-controls="gejala2" id="gejala2-trigger">
+                                    <span class="bs-stepper-circle">2</span>
+                                    <span class="bs-stepper-label"></span>
+                                  </button>
+                                </div>
+                                <div class="line"></div>
+                                <div class="step" data-target="#gejala3">
+                                  <button type="button" class="step-trigger" role="tab" aria-controls="gejala3" id="gejala3-trigger">
+                                    <span class="bs-stepper-circle">3</span>
+                                    <span class="bs-stepper-label"></span>
+                                  </button>
+                                </div>
+                                <div class="line"></div>
+                                <div class="step" data-target="#gejala4">
+                                  <button type="button" class="step-trigger" role="tab" aria-controls="gejala4" id="gejala4-trigger">
+                                    <span class="bs-stepper-circle">4</span>
+                                    <span class="bs-stepper-label"></span>
+                                  </button>
+                                </div>
+                              </div>
+                              <div class="bs-stepper-content">
+                                <!-- your steps content here -->
+                                <div id="gejala1" class="content" role="tabpanel" aria-labelledby="gejala1-trigger">
+                                  <div class="form-group">
+                                    <label for="gejala1">Pilih gejala yang kamu rasakan</label>
+                                    <select class="form-control" name="gejala1" id="gejala1">
+                                    <option value="">Tidak Ada</option>
+                                    @foreach ($data['gejala1'] as $item)
+                                      <option value="{{ $item->gejala1 }}">{{$item->gejala1 }}</option>
+                                    @endforeach
+                                    </select>                                  
+                                  </div>
+                                  <button type="button" class="btn btn-primary" onclick="stepper.next()">Next</button>
+                                </div>
+                                <div id="gejala2" class="content" role="tabpanel" aria-labelledby="gejala2-trigger">
+                                  <div class="form-group">
+                                    <label for="gejala2">Pilih gejala yang kamu rasakan</label>
+                                    <select class="form-control" name="gejala2" id="gejala2">
+                                    <option value="">Tidak Ada</option>
+                                    @foreach ($data['gejala2'] as $item)
+                                      <option value="{{ $item->gejala2 }}">{{$item->gejala2 }}</option>
+                                    @endforeach
+                                    </select>                                  
+                                  </div>
+                                  <button type="button" class="btn btn-primary" onclick="stepper.previous()">Previous</button>
+                                  <button type="button" class="btn btn-primary" onclick="stepper.next()">Next</button>
+                                </div>
+                                <div id="gejala3" class="content" role="tabpanel" aria-labelledby="gejala3-trigger">
+                                  <div class="form-group">
+                                    <label for="gejala3">Pilih gejala yang kamu rasakan</label>
+                                    <select class="form-control" name="gejala3" id="gejala3">
+                                    <option value="">Tidak Ada</option>
+                                    @foreach ($data['gejala3'] as $item)
+                                      <option value="{{ $item->gejala3 }}">{{$item->gejala3 }}</option>
+                                    @endforeach
+                                    </select>                                  
+                                  </div>
+                                  <button type="button" class="btn btn-primary" onclick="stepper.previous()">Previous</button>
+                                  <button type="button" class="btn btn-primary" onclick="stepper.next()">Next</button>
+                                </div>
+                                <div id="gejala4" class="content" role="tabpanel" aria-labelledby="gejala4-trigger">
+                                  <div class="form-group">
+                                    <label for="gejala1">Pilih gejala yang kamu rasakan</label>
+                                    <select class="form-control" name="gejala4" id="gejala4">
+                                    <option value="">Tidak Ada</option>
+                                    @foreach ($data['gejala4'] as $item)
+                                      <option value="{{ $item->gejala4 }}">{{$item->gejala4 }}</option>
+                                    @endforeach
+                                    </select>
+                                  </div>
+                                  <button type="button" class="btn btn-primary" onclick="stepper.previous()">Previous</button>
+                                  <button type="submit" class="btn btn-primary" name="idUser" value="{{ $data['id']; }}">Submit</button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </form>
+                    </div>
+                    <!-- /.card-body -->
                   </div>
-                  <!-- /.card-body -->
+                  <!-- /.card -->
                 </div>
-                <!-- /.card -->
-              </div>
+              
               <!-- /.col -->
             </div>
             <!-- /.row -->

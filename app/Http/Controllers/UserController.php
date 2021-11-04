@@ -132,7 +132,11 @@ class UserController extends Controller
             $gejala = $gejala1 . $gejala2 . $gejala3 . $gejala4;
             $indikasiPenyakit = "Penyakit tidak teridentifikasi";
             $saranDokter = "Jika kondisi memburuk, harap segera ke tenaga kesehatan terdekat";
-            
+        }
+        elseif (empty($gejala1 && $gejala2 && $gejala3 && $gejala4)) {
+            $gejala = "tidak bergejala";
+            $indikasiPenyakit = "Tidak terindikasi";
+            $saranDokter = "Anda tidak terindikasi penyakit lambung";
         }
         $dataPemeriksaan = DataPemeriksaan::create([
             'user_id'=> $id,
