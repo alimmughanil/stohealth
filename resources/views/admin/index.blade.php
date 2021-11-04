@@ -34,7 +34,7 @@
                 <!-- small box -->
                 <div class="small-box bg-primary">
                   <div class="inner">
-                    <h3>7
+                    <h3>{{ $data['dataPenyakit']; }}
                     </h3>
 
                     <p>Total Penyakit</p>
@@ -42,7 +42,7 @@
                   <div class="icon">
                     <i class="ion ion-bag"></i>
                   </div>
-                  <a href="#" class="small-box-footer"
+                  <a href="/admin/data-penyakit" class="small-box-footer"
                     >More info <i class="fas fa-arrow-circle-right"></i
                   ></a>
                 </div>
@@ -51,7 +51,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>10
+                    <h3>{{ $data['allUser']; }}
                     </h3>
 
                     <p>Total Pengguna</p>
@@ -59,7 +59,7 @@
                   <div class="icon">
                     <i class="ion ion-bag"></i>
                   </div>
-                  <a href="#" class="small-box-footer"
+                  <a href="/admin/data-pengguna" class="small-box-footer"
                     >More info <i class="fas fa-arrow-circle-right"></i
                   ></a>
                 </div>
@@ -69,7 +69,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>5
+                    <h3>{{ $data['dataPemeriksaan']; }}
                     </h3>
 
                     <p>Total Pemeriksaan</p>
@@ -77,7 +77,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="#" class="small-box-footer"
+                  <a href="/admin/data-pemeriksaan" class="small-box-footer"
                     >More info <i class="fas fa-arrow-circle-right"></i
                   ></a>
                 </div>

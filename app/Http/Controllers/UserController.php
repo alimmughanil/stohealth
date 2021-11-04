@@ -13,12 +13,23 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index(DataDiri $dataDiri, DataPenyakit $dataPenyakit, DataPemeriksaan $dataPemeriksaan){
         $user = Auth::user();
+        $kelengkapanDataDiri = $dataDiri->firstWhere('user_id', $user->id);
+        $totalPemeriksaan = $dataPemeriksaan->firstWhere('user_id', $user->id)->count();
+        if (!empty($kelengkapanDataDiri)) {
+            $persentase = 100;
+        }
+        elseif (empty($kelengkapanDataDiri)) {
+            $persentase = 25;
+        }
         $data = [
             'title' => 'Dashboard User',
             'name' => $user->name,
             'role' => $user->role,
+            'kelengkapanProfil' => $persentase,
+            'dataPenyakit' => $dataPenyakit::all()->count(),
+            'dataPemeriksaan' => $totalPemeriksaan,
         ];
         return view('user.index', compact('data'));
     }

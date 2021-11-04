@@ -14,12 +14,15 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-    public function index(){
+    public function index(User $allUser, DataPenyakit $dataPenyakit, DataPemeriksaan $dataPemeriksaan){
         $user = Auth::user();
         $data = [
             'title' => 'Dashboard Admin',
             'name' => $user->name,
             'role' => $user->role,
+            'allUser' => $allUser::all()->count(),
+            'dataPenyakit' => $dataPenyakit::all()->count(),
+            'dataPemeriksaan' => $dataPemeriksaan::all()->count(),
         ];
         return view('admin.index', compact('data'));
     }
