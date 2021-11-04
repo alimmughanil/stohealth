@@ -15,7 +15,12 @@ use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
 {
     public function index(){
-        $data = $this->postData('Dashboard Admin');
+        $user = Auth::user();
+        $data = [
+            'title' => 'Dashboard Admin',
+            'name' => $user->name,
+            'role' => $user->role,
+        ];
         return view('admin.index', compact('data'));
     }
     public function showUser(User $dataUser){
@@ -50,20 +55,23 @@ class AdminController extends Controller
     }
 
     public function storeUser(Request $request){
-         $request->validate([
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-            ]);
-        
-        User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'role' => $request['role'],
-            'password' => Hash::make($request['password']),
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-
-        return redirect()->back();
+        if ($validator->fails()==false) {
+            User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'role' => $request['role'],
+                'password' => Hash::make($request['password']),
+            ]);
+            return redirect()->back()->with('success','Tambah data pengguna berhasil');
+        }
+        elseif ($validator->fails()==true) {
+            return redirect()->back()->with('error','Tambah data pengguna gagal. ')->withErrors($validator, 'input');
+        }
     }
     public function storePenyakit(Request $request){
          $request->validate([
@@ -84,7 +92,7 @@ class AdminController extends Controller
             'saran_dokter' => $request['saranDokter'],
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Tambah data penyakit berhasil');;
     }
 
     public function getDataPenyakit(DataPenyakit $dataPenyakit){
@@ -122,7 +130,7 @@ class AdminController extends Controller
             'saran_dokter' => $request->saranDokter,
         ]);
 
-        return redirect('admin/data-penyakit');
+        return redirect('admin/data-penyakit')->with('success','Update data penyakit berhasil');;
     }
     public function updateDataPengguna(Request $request, User $user){
         $id = $request->id;
@@ -131,17 +139,17 @@ class AdminController extends Controller
             'role' => $request->role
         ]);
 
-        return redirect('admin/data-pengguna');
+        return redirect('admin/data-pengguna')->with('success','Update data pengguna berhasil');;
     }
 
     public function destroyDataPengguna(User $user, $id){
         $getUser = $user->firstWhere('id',$id);
         $delete = $getUser->delete();
-        return redirect('admin/data-pengguna');
+        return redirect('admin/data-pengguna')->with('success','Hapus data pengguna berhasil');;
     }
     public function destroyPenyakit(DataPenyakit $dataPenyakit, $id){
         $getdataPenyakit = $dataPenyakit->firstWhere('id',$id);
         $delete = $getdataPenyakit->delete();
-        return redirect('admin/data-penyakit');
+        return redirect('admin/data-penyakit')->with('success','Hapus data penyakit berhasil');;
     }
 }

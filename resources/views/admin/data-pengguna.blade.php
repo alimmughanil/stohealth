@@ -32,6 +32,25 @@
               <div class="col-12">
                 <div class="card">  
                   <div class="card-body">
+                    @if (session()->has('success'))
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          {{ session('success') }}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>          
+                    @endif
+                    @if (session()->has('error'))
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          {{ session('error') }}
+                          {{ $errors->input->first('name') }}
+                          {{ $errors->input->first('email') }}
+                          {{ $errors->input->first('password') }}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                    @endif
                     <table
                       id="example1"
                       class="table table-bordered table-striped"
@@ -62,7 +81,7 @@
                             <td>
                               <div class="row">
                                 <div class="col-2">
-                                  <button type="button" class="btn btn-sm btn-primary modal-editDataPengguna" data-toggle="modal" data-target="#modal-editDataPengguna" data-id="{{ $d_us['id'] }}">
+                                  <button type="button" class="btn btn-sm btn-primary mr-1 modal-editDataPengguna" data-toggle="modal" data-target="#modal-editDataPengguna" data-id="{{ $d_us['id'] }}">
                                     Edit
                                   </button>
                                   <div class="modal fade" id="modal-editDataPengguna">
@@ -123,7 +142,7 @@
                                   <form action="/admin/data-pengguna/{{ $d_us['id'] }}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-sm btn-danger ml-1">Delete</button>
                                   </form>
                                 </div>
                               </div>
@@ -157,10 +176,10 @@
         </button>
       </div>
         <div class="modal-footer justify-content-around">
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-addAdmin">
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-addAdmin" data-dismiss="modal">
             Admin
           </button>        
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-addUser">
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-addUser" data-dismiss="modal">
             User
           </button> 
         </div>
@@ -205,7 +224,7 @@
 
                   @error('email')
                       <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
+                          <strong>{{ $errors->input->first('email') }}</strong>
                       </span>
                   @enderror
               </div>

@@ -11,13 +11,4 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    public function postData($title){
-        $user = Auth::user();
-        return $data = [
-            'title' => $title,
-            'name' => $user->name,
-            'role' => $user->role,
-        ];
-    }
 }

@@ -75,7 +75,7 @@ class UserController extends Controller
             ];
         }
         elseif (empty($getDataDiri)) {
-            return redirect('/user/data-diri');
+            return redirect('/user/data-diri')->with('error','Silahkan isi data diri terlebih dahulu');;
         }
         return view('user.pemeriksaan-kesehatan', compact('data'));
     }
@@ -112,7 +112,9 @@ class UserController extends Controller
                 $saranDokter = $getPenyakit->saran_dokter;
             }
             elseif (empty($getPenyakit->nama_penyakit)) {
-                $indikasiPenyakit = "Anda tidak terindikasi penyakit lambung";
+                $gejala = $gejala1 .', '. $gejala2 .', '. $gejala3 .', '.$gejala4;
+                $indikasiPenyakit = "Tidak terindikasi";
+                $saranDokter = "Anda tidak terindikasi penyakit lambung. Namun, jika kondisi memburuk, harap segera ke tenaga kesehatan terdekat";
             }
         }
         elseif ($gejala1 || $gejala2 || $gejala3 || $gejala4) {
@@ -129,7 +131,7 @@ class UserController extends Controller
             'saran_dokter' => $saranDokter,
         ]);
 
-        return redirect('/user/data-pemeriksaan');
+        return redirect('/user/data-pemeriksaan')->with('success','Pemeriksaan kesehatan berhasil');
 
     }
     public function getSaranDokter(DataPemeriksaan $dataPemeriksaan){
@@ -152,7 +154,7 @@ class UserController extends Controller
         $getId = $dataDiri->firstWhere('user_id', $id) ;
         $getDataDiri = DataDiri::find($getId->id);
         $delete = $getDataDiri->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success','Hapus data diri berhasil');
     }
     public function update(Request $request, $id){
         $dataDiri = new DataDiri;
@@ -180,6 +182,6 @@ class UserController extends Controller
                 'address' => $request->address,
             ]);
         }
-        return redirect()->back();
+        return redirect()->back()->with('success','Update data diri berhasil');
     }
 }

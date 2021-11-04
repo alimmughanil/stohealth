@@ -135,6 +135,28 @@
                 <div class="card">
                   <!-- /.card-header -->
                   <div class="card-body">
+                    @if (session()->has('success'))
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          {{ session('success') }}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>          
+                    @endif
+                    @if (session()->has('error'))
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          {{ session('error') }}
+                          {{ $errors->input->first('namaPenyakit') }}
+                          {{ $errors->input->first('gejala1') }}
+                          {{ $errors->input->first('gejala2') }}
+                          {{ $errors->input->first('gejala3') }}
+                          {{ $errors->input->first('gejala4') }}
+                          {{ $errors->input->first('saranDokter') }}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>          
+                    @endif
                     <table
                       id="example1"
                       class="table table-bordered table-striped"
