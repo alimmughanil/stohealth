@@ -16,7 +16,14 @@ class UserController extends Controller
     public function index(DataDiri $dataDiri, DataPenyakit $dataPenyakit, DataPemeriksaan $dataPemeriksaan){
         $user = Auth::user();
         $kelengkapanDataDiri = $dataDiri->firstWhere('user_id', $user->id);
-        $totalPemeriksaan = $dataPemeriksaan->firstWhere('user_id', $user->id)->count();
+        $cekdataPemeriksaan = $dataPemeriksaan->firstWhere('user_id', $user->id);
+        if (empty($cekdataPemeriksaan)) {
+            $total = '0';
+        }
+        elseif (!empty($cekdataPemeriksaan)) {
+            $totalPemeriksaan = $cekdataPemeriksaan->count();
+            $total = $totalPemeriksaan;
+        }
         if (!empty($kelengkapanDataDiri)) {
             $persentase = 100;
         }
@@ -29,7 +36,7 @@ class UserController extends Controller
             'role' => $user->role,
             'kelengkapanProfil' => $persentase,
             'dataPenyakit' => $dataPenyakit::all()->count(),
-            'dataPemeriksaan' => $totalPemeriksaan,
+            'dataPemeriksaan' => $total,
         ];
         return view('user.index', compact('data'));
     }
@@ -129,7 +136,7 @@ class UserController extends Controller
             }
         }
         elseif ($gejala1 || $gejala2 || $gejala3 || $gejala4) {
-            $gejala = $gejala1 . $gejala2 . $gejala3 . $gejala4;
+            $gejala = $gejala1 .' '. $gejala2 .' '. $gejala3 .' '.$gejala4;
             $indikasiPenyakit = "Penyakit tidak teridentifikasi";
             $saranDokter = "Jika kondisi memburuk, harap segera ke tenaga kesehatan terdekat";
         }

@@ -346,7 +346,6 @@
                 responsive: true,
                 lengthChange: false,
                 autoWidth: false,
-                buttons: ["pdf", "print"],
             })
             .buttons()
             .container()
