@@ -7,7 +7,35 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Stohealth</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="/plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="/plugins/bs-stepper/css/bs-stepper.min.css">
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,8 +51,14 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand brand-link" href="{{ url('/') }}">
+                    <img
+                    src="/img/stohealth.png"
+                    alt="Stohealth Logo"
+                    class="brand-image"
+                    style="opacity: 0.8"
+                    />
+                    <span class="brand-text font-weight-light">Stohealth</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -79,5 +113,10 @@
             @yield('content')
         </main>
     </div>
+        <!-- Bootstrap 4 -->
+        <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- AdminLTE App -->
+        <script src="/dist/js/adminlte.min.js"></script>
 </body>
 </html>

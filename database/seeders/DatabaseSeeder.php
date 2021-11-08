@@ -38,5 +38,13 @@ class DatabaseSeeder extends Seeder
             'gejala4' => 'gejala 4',
             'saran_dokter' => 'saran dokter',
         ]);
+        DataPenyakit::create([
+            'nama_penyakit' => 'nama penyakit',
+            'gejala1' => 'gejala 1',
+            'gejala2' => 'gejala 2',
+            'gejala3' => 'gejala 3',
+            'gejala4' => 'gejala 4',
+            'saran_dokter' => 'saran dokter',
+        ]);
     }
 }

@@ -72,9 +72,9 @@
                 <!-- Brand Logo -->
                 <a href="{{ url('admin') }}" class="brand-link">
                     <img
-                    src="/img/default.png"
-                    alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3"
+                    src="/img/stohealth.png"
+                    alt="Stohealth Logo"
+                    class="brand-image"
                     style="opacity: 0.8"
                     />
                     <span class="brand-text font-weight-light">Stohealth</span>
