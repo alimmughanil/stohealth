@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\DataPemeriksaan;
 use App\Http\Controllers\Controller;
 use App\Models\DataDiri;
+use App\Models\DataGejala;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -36,12 +37,13 @@ class AdminController extends Controller
         ];
         return view('admin.data-pengguna', compact('data'));
     }
-    public function showDiagnose(DataPenyakit $dataPenyakit){
+    public function showDiagnose(DataPenyakit $dataPenyakit,DataGejala $dataGejala){
         $user = Auth::user();
         $data = [
             'title' => 'Manajemen Penyakit',
             'name' => $user->name,
             'role' => $user->role,
+            'dataGejala' => $dataGejala::all(),
             'dataPenyakit' => $dataPenyakit::all(),
         ];
         return view('admin.data-penyakit', compact('data'));
@@ -76,26 +78,45 @@ class AdminController extends Controller
             return redirect()->back()->with('error','Tambah data pengguna gagal. ')->withErrors($validator, 'input');
         }
     }
-    public function storePenyakit(Request $request){
+    public function storeGejala(Request $request){
          $request->validate([
-                'namaPenyakit' => ['required', 'string', 'max:255'],
-                'gejala1' => ['required', 'string', 'max:255'],
-                'gejala2' => ['required', 'string', 'max:255'],
-                'gejala3' => ['required', 'string', 'max:255'],
-                'gejala4' => ['required', 'string', 'max:255'],
-                'saranDokter' => ['required'],
+                'gejala' => ['required', 'string', 'max:255'],
             ]);
         
-        DataPenyakit::create([
-            'nama_penyakit' => $request['namaPenyakit'],
-            'gejala1' => strtolower($request['gejala1']),
-            'gejala2' => strtolower($request['gejala2']),
-            'gejala3' => strtolower($request['gejala3']),
-            'gejala4' => strtolower($request['gejala4']),
-            'saran_dokter' => $request['saranDokter'],
+        DataGejala::create([
+            'gejala' => strtolower($request['gejala']),
         ]);
 
-        return redirect()->back()->with('success','Tambah data penyakit berhasil');;
+        return redirect()->back()->with('success','Tambah data gejala berhasil');;
+    }
+    public function storePenyakit(Request $request){
+        $validator = Validator::make($request->all(), [
+            'namaPenyakit' => ['required', 'string', 'max:255'],
+            'gejala1' => ['required', 'max:255'],
+            'gejala2' => ['required', 'max:255'],
+            'gejala3' => ['required', 'max:255'],
+            'gejala4' => ['required', 'max:255'],
+            'saranDokter' => ['required'],
+        ]);
+        $gejala1 = implode(', ', array_values($request['gejala1']));
+        $gejala2 = implode(', ', array_values($request['gejala2']));
+        $gejala3 = implode(', ', array_values($request['gejala3']));
+        $gejala4 = implode(', ', array_values($request['gejala4']));
+
+        if ($validator->fails()==false) {
+            DataPenyakit::create([
+                'nama_penyakit' => $request['namaPenyakit'],
+                'gejala1' => strtolower($gejala1),
+                'gejala2' => strtolower($gejala2),
+                'gejala3' => strtolower($gejala3),
+                'gejala4' => strtolower($gejala4),
+                'saran_dokter' => $request['saranDokter'],
+            ]);            
+            return redirect()->back()->with('success','Tambah data penyakit berhasil');
+        }
+        elseif ($validator->fails()==true) {
+            return redirect()->back()->with('error','Tambah data penyakit gagal. ')->withErrors($validator, 'input');
+        }
     }
 
     public function getDataPenyakit(DataPenyakit $dataPenyakit){

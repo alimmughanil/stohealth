@@ -33,6 +33,6 @@ class DataDiri extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('data_diri');
     }
 }

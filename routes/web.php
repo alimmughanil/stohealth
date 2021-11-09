@@ -30,6 +30,7 @@ Route::group(['middleware' => ['Admin']], function () {
     Route::get('/admin/data-penyakit', [AdminController::class, 'showDiagnose']);
     Route::get('/admin/data-pemeriksaan', [AdminController::class, 'showHistory']);
     Route::post('/admin/data-pengguna/store', [AdminController::class, 'storeUser']);
+    Route::post('/admin/data-gejala/store', [AdminController::class, 'storeGejala']);
     Route::post('/admin/data-penyakit/store', [AdminController::class, 'storePenyakit']);
     Route::get('/admin/data-penyakit/getDataPenyakit', [AdminController::class, 'getDataPenyakit']);
     Route::get('/admin/history/getDataUser', [AdminController::class, 'getDataUser']);

@@ -555,6 +555,7 @@ class ComposerStaticInit90275872f9f820ecac4eaf05ef474154
         'App\\Http\\Middleware\\User' => __DIR__ . '/../..' . '/app/Http/Middleware/User.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\DataDiri' => __DIR__ . '/../..' . '/app/Models/DataDiri.php',
+        'App\\Models\\DataGejala' => __DIR__ . '/../..' . '/app/Models/DataGejala.php',
         'App\\Models\\DataPemeriksaan' => __DIR__ . '/../..' . '/app/Models/DataPemeriksaan.php',
         'App\\Models\\DataPenyakit' => __DIR__ . '/../..' . '/app/Models/DataPenyakit.php',
         'App\\Models\\RoleDetail' => __DIR__ . '/../..' . '/app/Models/RoleDetail.php',

@@ -30,6 +30,7 @@ return array(
     'App\\Http\\Middleware\\User' => $baseDir . '/app/Http/Middleware/User.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\DataDiri' => $baseDir . '/app/Models/DataDiri.php',
+    'App\\Models\\DataGejala' => $baseDir . '/app/Models/DataGejala.php',
     'App\\Models\\DataPemeriksaan' => $baseDir . '/app/Models/DataPemeriksaan.php',
     'App\\Models\\DataPenyakit' => $baseDir . '/app/Models/DataPenyakit.php',
     'App\\Models\\RoleDetail' => $baseDir . '/app/Models/RoleDetail.php',

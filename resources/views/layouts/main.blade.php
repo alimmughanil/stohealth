@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ $data['title']; }}</title>
 
+    <link rel="shortcut icon" href="/img/stohealth.png">
     <!-- Google Font: Source Sans Pro -->
     <link
       rel="stylesheet"
@@ -32,6 +33,10 @@
     <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
     <link rel="stylesheet" href="/plugins/bs-stepper/css/bs-stepper.min.css">
     <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+      <!-- Select2 -->
+    <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
   </head>
   <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -51,16 +56,6 @@
                     <li class="nav-item">
                         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                             <i class="fas fa-expand-arrows-alt"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a
-                            class="nav-link"
-                            data-widget="control-sidebar"
-                            data-controlsidebar-slide="true"
-                            href="#"
-                            role="button">
-                            <i class="fas fa-th-large"></i>
                         </a>
                     </li>
                 </ul>
@@ -159,9 +154,9 @@
                 <!-- Brand Logo -->
                 <a href="{{ url('user') }}" class="brand-link">
                     <img
-                    src="/img/default.png"
-                    alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3"
+                    src="/img/stohealth.png"
+                    alt="Stohealth Logo"
+                    class="brand-image"
                     style="opacity: 0.8"
                     />
                     <span class="brand-text font-weight-light">Stohealth</span>
@@ -307,11 +302,6 @@
         All rights reserved.
     </footer>
 
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-      </aside>
-      <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
@@ -338,6 +328,8 @@
     <script src="/dist/js/demo.js"></script>
     <script src="/js/script.js"></script>
     <script src="/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+    <!-- Select2 -->
+    <script src="/plugins/select2/js/select2.full.min.js"></script>
     <!-- Page specific script -->
     <script>
         $(function () {
@@ -363,6 +355,13 @@
         // BS-Stepper Init
         document.addEventListener('DOMContentLoaded', function () {
             window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+        })
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+        theme: 'bootstrap4'
         })
     </script>
   </body>

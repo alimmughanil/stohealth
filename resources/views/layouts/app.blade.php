@@ -9,6 +9,8 @@
 
     <title>Stohealth</title>
 
+    <link rel="shortcut icon" href="/img/stohealth.png">
+
     <!-- Google Font: Source Sans Pro -->
     <link
       rel="stylesheet"

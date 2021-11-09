@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DataGejala;
 use App\Models\DataPenyakit;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -30,21 +31,160 @@ class DatabaseSeeder extends Seeder
             'role' => '2',
             'password' => Hash::make('rahasia123'),
         ]);
+        $daftarGejala = [
+            'mules',
+            'kembung',
+            'sendawa berlebih',
+            'demam',
+            'diare',
+            'pembengkakan di area perut',
+            'mual',
+            'sakit kepala',
+            'penurunan berat badan',
+            'susah bab',
+            'kesulitan menelan',
+            'cepat kenyang',
+            'kehilangan nafsu makan',
+            'nyeri perut',
+            'rasa perih pada perut',
+            'bab berdarah',
+            'badan cepat lelah',
+            'nyeri dada',
+            'tinja berwarna gelap',
+            'sesak nafas',
+            'sakit tenggorokan',
+            'muntah',
+            'lidah seperti berlapis lendir',
+            'bau nafas tidak sedap',
+            'kram perut',
+            'radang lambung',
+            'mulut terasa pahit',
+            'muntah darah',
+            'sakit perut bagian atas (ulu hati)',
+            'cegukan',
+            'tubuh terasa lemah',
+            'suara serak',
+        ];
+        foreach ($daftarGejala as $gejala) {
+            DataGejala::create([
+                'gejala' => $gejala,
+            ]);        
+        }
+
         DataPenyakit::create([
-            'nama_penyakit' => 'nama penyakit',
-            'gejala1' => 'gejala 1',
-            'gejala2' => 'gejala 2',
-            'gejala3' => 'gejala 3',
-            'gejala4' => 'gejala 4',
-            'saran_dokter' => 'saran dokter',
-        ]);
+            'nama_penyakit' => 'GERD',
+            'gejala1' => 'kembung, demam, mual',
+            'gejala2' => 'kesulitan menelan, rasa perih pada perut',
+            'gejala3' => 'nyeri dada, sesak nafas, sakit tenggorokan, lidah seperti berlapis lendir, bau nafas tidak sedap',
+            'gejala4' => 'mulut terasa pahit, muntah darah, suara serak',
+            'saran_dokter' => 
+'1. Merubah Pola Hidup Menjadi Lebih Sehat, 
+2. Berhenti Merokok, 
+3. Hindari Berbaring setelah makan, 
+4. Hindari makan dengan jumlah Porsi yang besar, 
+5. Hindari Obesitas, 
+6. Hindari stress, 
+7. Istirahat cukup, 
+8. Olahraga teratur, 
+9. Segera datang ke Puskesmas atau Klinik terdekat untuk mendapatkan penanganan medis jika mengalami sakit GERD.
+
+Pengobatan: 
+antasida, PPI (Proton Pump Inhibitor) seperti, omeprazol, lansoprazol, dan Penghambat reseptor H2 seperti Ranitidin, dan prokinetik seperti domperidon',]);
         DataPenyakit::create([
-            'nama_penyakit' => 'nama penyakit',
-            'gejala1' => 'gejala 1',
-            'gejala2' => 'gejala 2',
-            'gejala3' => 'gejala 3',
-            'gejala4' => 'gejala 4',
-            'saran_dokter' => 'saran dokter',
-        ]);
+            'nama_penyakit' => 'Kolik Abdomen',
+            'gejala1' => 'mules, sendawa berlebih, mual',
+            'gejala2' => 'susah bab, rasa perih pada perut, bab berdarah',            
+            'gejala3' => 'tinja berwarna gelap, muntah',            
+            'gejala4' => 'muntah darah',
+            'saran_dokter' => 
+'1. Tidur dan istirahat cukup, 
+2. Makan makanan bergizi, 
+3. Minum air dalam jumlah cukup,
+4. Olahraga rutin, 
+5. Menghindari rokok dan alkohol, 
+6. Bila nyeri dapat diberikan obat anti
+nyeri dan mengompres perut dengan air hangat. 
+
+Pengobatan: 
+koreksi dehidrasi, beri obat nyeri (Asam Mefenamat), bila tidak membaik, Segera Konsultasi ke Puskesmas atau Klinik terdekat untuk dirujuk ke Rumah Sakit.',]);
+
+        DataPenyakit::create([
+            'nama_penyakit' => 'Kanker Lambung',
+            'gejala1' => 'mules, kembung, demam, pembengkakan di area perut, mual',
+            'gejala2' => 'penurunan berat badan, kesulitan menelan, cepat kenyang, kehilangan nafsu makan',            
+            'gejala3' => 'badan cepat lelah, nyeri dada, tinja berwarna gelap, sesak nafas',            
+            'gejala4' => 'muntah darah, sakit perut bagian atas (ulu hati), tubuh terasa lemah',
+            'saran_dokter' => 
+'1. Rajin Berolahraga, 
+2. Perbanyak minum air putih, 
+3. Perbanyak konsumsi buah dan sayur,
+4. Jangan merokok, 
+5. Hindari mengkonsumsi makanan yang di awetkan, 
+6. Hindari makan daging yang di goreng dan dibakar, 
+7. Segera Ke Klinik atau Puskesmas terdekat untuk mendapatkan penanganan medis jika mengalami sakit kanker lambung. 
+
+Pengobatan:
+Radioterapi, Kemoterapi, dan Operasi.',]);
+        DataPenyakit::create([
+            'nama_penyakit' => 'Appendicitis',
+            'gejala1' => 'mules, sendawa berlebih, diare, pembengkakan di area perut, mual',            
+            'gejala2' => 'kehilangan nafsu makan, nyeri perut',
+            'gejala3' => 'muntah',            
+            'gejala4' => 'tidak ada',            
+            'saran_dokter' => 
+'1. Konsumsi makanan berserat, 
+2.Jangan tunda buang air besar (BAB), 
+3. Batasi asupan kafein dan alkohol, 
+4. Banyak konsumsi air putih, 
+5. Kurangi makan pedas, santan dan berlemak,
+6. hindari stress, 
+7. Olahraga teratur, 
+8. Segera datang ke Puskesmas atau Klinik terdekat untuk mendapatkan penanganan lebih lanjut. 
+
+Pengobatan : 
+Pemberian antibiotik seperti metronidazole dan ciprofloxacin, pemberian obat imunosupresan seperti azathioprine, cyclosporine, dan infliximab, dan pemberian OAINS seperti kortikosteroid.'
+,]);
+        DataPenyakit::create([
+            'nama_penyakit' => 'Gastritis',
+            'gejala1' => 'kembung, demam, pembengkakan di area perut',
+            'gejala2' => 'cepat kenyang, kehilangan nafsu makan, nyeri perut',
+            'gejala3' => 'tinja berwarna gelap, muntah',
+            'gejala4' => 'tubuh terasa lemah, radang lambung',
+            'saran_dokter' => 
+'1. Mengganti Kebiasaan Makan, 
+2. Menghindari minuman beralkohol, 
+3. Hindari makanan pedas dan asam dan mengandung gas, 
+4. Kurangi atau hindari konsumsi kopi, teh, dan minuman bersoda, 
+5. Usahakan jadwal makan teratur dan jangan sampai terlambat, 
+6. Kelola stres dengan baik melalui olahraga, metode relaksasi atau kegiatan lain yang disukai,
+7. Segera Konsultasi ke Klinik atau Puskesmas Terdekat untuk mendapatkan penanganan medis.
+
+Pengobatan : 
+Obat Antasida Doen, Obat Ranitidin, Omeprazole, dan Promag.'
+,]);
+        DataPenyakit::create([
+            'nama_penyakit' => 'Gastroenteritis',
+            'gejala1' => 'mules, sendawa berlebih, demam, diare',
+            'gejala2' => 'kehilangan nafsu makan, nyeri perut, bab berdarah',
+            'gejala3' => 'badan cepat lelah, muntah',
+            'gejala4' => 'kram perut, tubuh terasa lemah',
+            'saran_dokter' => 
+'1. Mencuci tangan dengan air mengalir dan sabun setiap kali sebelum makan, 
+2. Memilih makanan yang higienis untuk dikonsumsi, 
+3. Gunakan tisue untuk mengeringkan tangan,
+4. Pastikan Makanan yang dimasak sudah matang, 5. Bersihkan kamar mandi dan toilet secara teratur, 
+6. Banyak Minum air Putih, 
+7. Banyak Istirahat, Hindari susu, alkohol dan kafein,
+8. Konsultasikan Ke Klinik atau Puskesmas terdekat untuk mendapatkan penanganan medis secara lebih lanjut. 
+
+Pengobatan : 
+oralit, obat anti diare seperti loperamide.'
+,]);
+
+
+
+
+
+
     }
 }

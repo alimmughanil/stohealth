@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DataPemeriksaan extends Migration
+class CreateDataGejalasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class DataPemeriksaan extends Migration
      */
     public function up()
     {
-        Schema::create('data_pemeriksaan', function (Blueprint $table) {
+        Schema::create('data_gejala', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->string('nama');
             $table->string('gejala');
-            $table->string('indikasi_penyakit');
-            $table->longText('saran_dokter');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class DataPemeriksaan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_pemeriksaan');
+        Schema::dropIfExists('data_gejala');
     }
 }

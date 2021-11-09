@@ -16,10 +16,10 @@ class DataPenyakit extends Migration
         Schema::create('data_penyakit', function (Blueprint $table) {
             $table->id();
             $table->string('nama_penyakit');
-            $table->string('gejala1');
-            $table->string('gejala2');
-            $table->string('gejala3');
-            $table->string('gejala4');
+            $table->string('gejala1')->nullable();
+            $table->string('gejala2')->nullable();
+            $table->string('gejala3')->nullable();
+            $table->string('gejala4')->nullable();
             $table->longText('saran_dokter');
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class DataPenyakit extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('data_penyakit');
     }
 }

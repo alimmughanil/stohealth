@@ -30,7 +30,7 @@
                     <div class="card-header">
                       <h3 class="card-title">Identifikasi Gejala</h3>
                     </div>
-                    <div class="card-body p-0">
+                    <div class="card-body p-2">
                       <form action="/user/pemeriksaan-kesehatan/save" method="POST" class="text-left">
                         @csrf
                         <div class="form-group">
@@ -70,24 +70,26 @@
                                 <div id="gejala1" class="content" role="tabpanel" aria-labelledby="gejala1-trigger">
                                   <div class="form-group">
                                     <label for="gejala1">Pilih gejala yang kamu rasakan</label>
-                                    <select class="form-control" name="gejala1" id="gejala1">
-                                    <option value="">Tidak Ada</option>
-                                    @foreach ($data['gejala1'] as $item)
-                                      <option value="{{ $item->gejala1 }}">{{$item->gejala1 }}</option>
-                                    @endforeach
-                                    </select>                                  
+                                    <div class="select2-primary">
+                                      <select class="form-control select2" name="gejala1[]" multiple="multiple" data-placeholder="Klik next jika tidak mengalami gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
+                                        @foreach ($data['gejala1'] as $item)
+                                          <option value="{{ $item }}">{{$item }}</option>
+                                        @endforeach
+                                      </select>                                  
+                                    </div>
                                   </div>
                                   <button type="button" class="btn btn-primary" onclick="stepper.next()">Next</button>
                                 </div>
                                 <div id="gejala2" class="content" role="tabpanel" aria-labelledby="gejala2-trigger">
                                   <div class="form-group">
                                     <label for="gejala2">Pilih gejala yang kamu rasakan</label>
-                                    <select class="form-control" name="gejala2" id="gejala2">
-                                    <option value="">Tidak Ada</option>
-                                    @foreach ($data['gejala2'] as $item)
-                                      <option value="{{ $item->gejala2 }}">{{$item->gejala2 }}</option>
-                                    @endforeach
-                                    </select>                                  
+                                    <div class="select2-primary">
+                                      <select class="form-control select2" name="gejala2[]" multiple="multiple" data-placeholder="Klik next jika tidak mengalami gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
+                                        @foreach ($data['gejala2'] as $item)
+                                          <option value="{{ $item }}">{{$item }}</option>
+                                        @endforeach
+                                      </select>                                  
+                                    </div>
                                   </div>
                                   <button type="button" class="btn btn-primary" onclick="stepper.previous()">Previous</button>
                                   <button type="button" class="btn btn-primary" onclick="stepper.next()">Next</button>
@@ -95,25 +97,27 @@
                                 <div id="gejala3" class="content" role="tabpanel" aria-labelledby="gejala3-trigger">
                                   <div class="form-group">
                                     <label for="gejala3">Pilih gejala yang kamu rasakan</label>
-                                    <select class="form-control" name="gejala3" id="gejala3">
-                                    <option value="">Tidak Ada</option>
-                                    @foreach ($data['gejala3'] as $item)
-                                      <option value="{{ $item->gejala3 }}">{{$item->gejala3 }}</option>
-                                    @endforeach
-                                    </select>                                  
+                                    <div class="select2-primary">
+                                      <select class="form-control select2" name="gejala3[]" multiple="multiple" data-placeholder="Klik next jika tidak mengalami gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
+                                        @foreach ($data['gejala3'] as $item)
+                                          <option value="{{ $item }}">{{$item }}</option>
+                                        @endforeach
+                                      </select>                                  
+                                    </div>
                                   </div>
                                   <button type="button" class="btn btn-primary" onclick="stepper.previous()">Previous</button>
                                   <button type="button" class="btn btn-primary" onclick="stepper.next()">Next</button>
                                 </div>
                                 <div id="gejala4" class="content" role="tabpanel" aria-labelledby="gejala4-trigger">
                                   <div class="form-group">
-                                    <label for="gejala1">Pilih gejala yang kamu rasakan</label>
-                                    <select class="form-control" name="gejala4" id="gejala4">
-                                    <option value="">Tidak Ada</option>
-                                    @foreach ($data['gejala4'] as $item)
-                                      <option value="{{ $item->gejala4 }}">{{$item->gejala4 }}</option>
-                                    @endforeach
-                                    </select>
+                                    <label for="gejala4">Pilih gejala yang kamu rasakan</label>
+                                    <div class="select2-primary">
+                                      <select class="form-control select2" name="gejala4[]" multiple="multiple" data-placeholder="Klik next jika tidak mengalami gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
+                                        @foreach ($data['gejala4'] as $item)
+                                          <option value="{{ $item }}">{{$item }}</option>
+                                        @endforeach
+                                      </select>                                  
+                                    </div>
                                   </div>
                                   <button type="button" class="btn btn-primary" onclick="stepper.previous()">Previous</button>
                                   <button type="submit" class="btn btn-primary" name="idUser" value="{{ $data['id']; }}">Submit</button>

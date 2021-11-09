@@ -83,9 +83,14 @@
                                     </div>
                                     <div class="modal-body">
                                       <div class="form-group">
-                                        <textarea class="form-control" id="showSaran_dokter" name="showSaran_dokter" rows="8"></textarea>
+                                        <textarea class="form-control" id="showSaran_dokter" name="showSaran_dokter" rows="16"></textarea>
                                       </div>
                                     </div>
+                                    <div class="card-footer">        
+                                      <div class="col-2 d-flex float-right">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                      </div>                  
+                                    </div>                  
                                   </div>
                                   <!-- /.modal-content -->
                                 </div>

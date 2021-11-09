@@ -24,98 +24,148 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title">Tambah Data Penyakit</h4>
+                    <h4 class="modal-title">Tambah Data</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form action="/admin/data-penyakit/store" method="post">
-                      @csrf
-                      <div class="form-group row">
-                          <label for="namaPenyakit" class="col-md-4 col-form-label text-md-right">Nama Penyakit</label>
-            
-                          <div class="col-md-6">
-                              <input id="namaPenyakit" type="text" class="form-control @error('namaPenyakit') is-invalid @enderror" name="namaPenyakit" value="{{ old('namaPenyakit') }}" required autocomplete="namaPenyakit" autofocus>
-            
-                              @error('namaPenyakit')
+                  <!-- Tambah Data Gejala -->
+                  <div class="card card-default">
+                    <div class="card-header">
+                      <h3 class="card-title">Tambah Data Gejala</h3>
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body collapse">
+                      <div class="row">
+                        <!-- /.col -->
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <form action="/admin/data-gejala/store" method="post">
+                              @csrf
+                              <label for="gejala" class="">Nama Gejala</label>
+                              <input id="gejala" type="text" class="form-control @error('gejala') is-invalid @enderror" name="gejala" value="{{ old('gejala') }}" required autocomplete="gejala">
+                              @error('gejala')
                                   <span class="invalid-feedback" role="alert">
                                       <strong>{{ $message }}</strong>
                                   </span>
                               @enderror
                           </div>
-                      </div>
-            
-                      <div class="form-group row">
-                          <label for="gejala1" class="col-md-4 col-form-label text-md-right">Gejala 1</label>
-            
-                          <div class="col-md-6">
-                              <input id="gejala1" type="text" class="form-control @error('gejala1') is-invalid @enderror" name="gejala1" value="{{ old('gejala1') }}" required autocomplete="gejala1">
-            
-                              @error('gejala1')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
-                              @enderror
-                          </div>
-                      </div>
-                      <div class="form-group row">
-                          <label for="gejala2" class="col-md-4 col-form-label text-md-right">Gejala 2</label>
-            
-                          <div class="col-md-6">
-                              <input id="gejala2" type="text" class="form-control @error('gejala2') is-invalid @enderror" name="gejala2" value="{{ old('gejala2') }}" required autocomplete="gejala2">
-            
-                              @error('gejala2')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
-                              @enderror
-                          </div>
-                      </div>
-                      <div class="form-group row">
-                          <label for="gejala3" class="col-md-4 col-form-label text-md-right">Gejala 3</label>
-            
-                          <div class="col-md-6">
-                              <input id="gejala3" type="text" class="form-control @error('gejala3') is-invalid @enderror" name="gejala3" value="{{ old('gejala3') }}" required autocomplete="gejala3">
-            
-                              @error('gejala3')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
-                              @enderror
-                          </div>
-                      </div>
-                      <div class="form-group row">
-                          <label for="gejala4" class="col-md-4 col-form-label text-md-right">Gejala 4</label>
-            
-                          <div class="col-md-6">
-                              <input id="gejala4" type="text" class="form-control @error('gejala4') is-invalid @enderror" name="gejala4" value="{{ old('gejala4') }}" required autocomplete="gejala4">
-            
-                              @error('gejala4')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
-                              @enderror
-                          </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="saranDokter" class="col-md-4 col-form-label text-md-right">Saran Dokter</label>
-            
-                        <div class="col-md-6">
-                            <textarea id="saranDokter" name="saranDokter" rows="6" class="form-control @error('saranDokter') is-invalid @enderror" name="saranDokter" value="{{ old('saranDokter') }}" required autocomplete="saranDokter"></textarea>
-
-                            @error('saranDokter')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
                       </div>
-            
-                      <div class="col-md-6 offset-md-4">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    </div>
+                    <div class="card-footer collapse">        
+                      <div class="col-6 offset-4">
+                        <button type="button" class="btn btn-secondary" data-card-widget="collapse">Tutup</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
+                      </div>                  
+                    </form>
+                    </div>
+                  </div>
+                  <div class="card card-default">
+                    <div class="card-header">
+                      <h3 class="card-title">Tambah Data Penyakit</h3>
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                          <i class="fas fa-minus"></i>
+                        </button>
                       </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <div class="row">
+                        <!-- /.col -->
+                        <div class="col-md-12">
+                          <form action="/admin/data-penyakit/store" method="post">
+                            @csrf
+                            <div class="row form-group">
+                              <div class="col">
+                                <label for="namaPenyakit" class="">Nama Penyakit</label>
+                                <input id="namaPenyakit" type="text" class="form-control @error('namaPenyakit') is-invalid @enderror" name="namaPenyakit" value="{{ old('namaPenyakit') }}" required autocomplete="namaPenyakit" autofocus>
+                                @error('namaPenyakit')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                              </div>
+                            </div>
+                            {{-- input gejala1 --}}
+                            <div class="row form-group">
+                              <div class="col">
+                                <label class="">Gejala 1</label>
+                                <div class="select2-primary">
+                                  <select class="select2" name="gejala1[]" id="gejala1" multiple="multiple" data-placeholder="Pilih gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
+                                    @foreach ($data['dataGejala'] as $item)
+                                    <option value="{{ $item->gejala }}">{{$item->gejala }}</option>
+                                    @endforeach
+                                  </select>
+                                </div>                              
+                              </div>
+                            </div>
+                            {{-- input gejala2 --}}
+                            <div class="row form-group">
+                              <div class="col">
+                                <label class="">Gejala 2</label>
+                                <div class="select2-primary">
+                                  <select class="select2" name="gejala2[]" id="gejala2" multiple="multiple" data-placeholder="Pilih gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
+                                    @foreach ($data['dataGejala'] as $item)
+                                    <option value="{{ $item->gejala }}">{{$item->gejala }}</option>
+                                    @endforeach
+                                  </select>
+                                </div>                              
+                              </div>
+                            </div>
+                            {{-- input gejala3 --}}
+                            <div class="row form-group">
+                              <div class="col">
+                                <label class="">Gejala 3</label>
+                                <div class="select2-primary">
+                                  <select class="select2" name="gejala3[]" id="gejala3" multiple="multiple" data-placeholder="Pilih gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
+                                    @foreach ($data['dataGejala'] as $item)
+                                    <option value="{{ $item->gejala }}">{{$item->gejala }}</option>
+                                    @endforeach
+                                  </select>
+                                </div>                              
+                              </div>
+                            </div>
+                            {{-- input gejala4 --}}
+                            <div class="row form-group">
+                              <div class="col">
+                                <label class="">Gejala 4</label>
+                                <div class="select2-primary">
+                                  <select class="select2" name="gejala4[]" id="gejala4" multiple="multiple" data-placeholder="Pilih gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
+                                    @foreach ($data['dataGejala'] as $item)
+                                    <option value="{{ $item->gejala }}">{{$item->gejala }}</option>
+                                    @endforeach
+                                  </select>
+                                </div>                              
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="col">
+                                <label for="saranDokter" class="">Saran Dokter</label>
+                                  <textarea id="saranDokter" name="saranDokter" rows="6" class="form-control @error('saranDokter') is-invalid @enderror" name="saranDokter" value="{{ old('saranDokter') }}" required autocomplete="saranDokter"></textarea>
+                                  @error('saranDokter')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
+                                  @enderror
+                              </div>
+                            </div>                  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">        
+                    <div class="col-6 offset-4">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                      <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>                  
                   </form>
                   </div>
                 </div>
@@ -145,12 +195,18 @@
                     @endif
                     @if (session()->has('error'))
                       <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                          {{ session('error') }}
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>          
-                    @endif
+                        {{ session('error') }}
+                        {{ $errors->input->first('namaPenyakit') }}
+                        {{ $errors->input->first('gejala1') }}
+                        {{ $errors->input->first('gejala2') }}
+                        {{ $errors->input->first('gejala3') }}
+                        {{ $errors->input->first('gejala4') }}
+                        {{ $errors->input->first('saranDokter') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                  @endif
                     <table
                       id="example1"
                       class="table table-bordered table-striped"
@@ -178,9 +234,13 @@
                             <td>{{ $d_py['gejala3'] }}</td>
                             <td>{{ $d_py['gejala4'] }}</td>
                             <td class="d-flex justify-content-center">
-                              <button type="button" class="btn btn-sm btn-primary modal-getDataPenyakit" data-toggle="modal" data-target="#modal-showSaranDokter" data-id="{{ $d_py['id'] }}">
-                                Lihat
-                              </button>
+                              <div class="row m-1 text-center">
+                                <div class="col-12">
+                                  <button type="button" class="btn btn-sm btn-primary modal-getDataPenyakit" data-toggle="modal" data-target="#modal-showSaranDokter" data-id="{{ $d_py['id'] }}">
+                                    Lihat
+                                  </button>
+                                </div>
+                              </div>
                               <div class="modal fade" id="modal-showSaranDokter">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
@@ -192,7 +252,7 @@
                                     </div>
                                     <div class="modal-body">
                                       <div class="form-group">
-                                        <textarea class="form-control" id="showSaran_dokter" name="showSaran_dokter" rows="8"></textarea>
+                                        <textarea class="form-control" id="showSaran_dokter" name="showSaran_dokter" rows="16"></textarea>
                                       </div>
                                     </div>
                                   </div>
@@ -202,8 +262,8 @@
                               </div>
                             </td>
                             <td>
-                              <div class="row">
-                                <div class="col-sm-4">
+                              <div class="row m-1 text-center">
+                                <div class="col-12">
                                   <button type="button" class="btn btn-sm btn-primary modal-getDataPenyakit" data-toggle="modal" data-target="#modal-editDataPenyakit" data-id="{{ $d_py['id'] }}">
                                     Edit
                                   </button>
@@ -325,7 +385,9 @@
                                     <!-- /.modal-dialog -->
                                   </div>
                                 </div>
-                                <div class="col-sm-4">
+                              </div>
+                              <div class="row m-1 text-center">
+                                <div class="col-12">
                                   <form action="/admin/data-penyakit/{{ $d_py['id'] }}" method="POST">
                                     @method('DELETE')
                                     @csrf
