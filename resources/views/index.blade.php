@@ -139,7 +139,7 @@ http://www.tooplate.com/view/2098-health
                               <figure class="profile wow fadeInUp" data-wow-delay="1s">
                                    <img src="images/author-image.jpg" class="img-responsive" alt="">
                                    <figcaption>
-                                        <h3>Dr. Mahendra Ardianova</h3>
+                                        <h3>Dr. Mahendra Adrianova</h3>
                                         <p>General Principal</p>
                                    </figcaption>
                               </figure>

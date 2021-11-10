@@ -78,16 +78,22 @@ class AdminController extends Controller
             return redirect()->back()->with('error','Tambah data pengguna gagal. ')->withErrors($validator, 'input');
         }
     }
-    public function storeGejala(Request $request){
+    public function storeGejala(Request $request, DataGejala $dataGejala){
          $request->validate([
                 'gejala' => ['required', 'string', 'max:255'],
             ]);
-        
-        DataGejala::create([
-            'gejala' => strtolower($request['gejala']),
-        ]);
+        $findGejala = $dataGejala->firstWhere('gejala', $request->gejala);
 
-        return redirect()->back()->with('success','Tambah data gejala berhasil');;
+        if ($findGejala == null) {
+            DataGejala::create([
+                'gejala' => strtolower($request['gejala']),
+            ]);        
+            return redirect()->back()->with('success','Tambah data gejala berhasil');
+        }
+        else{
+            return redirect()->back()->with('error','Tambah data gejala gagal. gejala yang diinputkan sudah ada di database');
+        }
+
     }
     public function storePenyakit(Request $request){
         $validator = Validator::make($request->all(), [

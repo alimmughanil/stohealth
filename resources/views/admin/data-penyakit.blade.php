@@ -67,7 +67,6 @@
                     </form>
                     </div>
                   </div>
-                  {{-- Tambah Data Penyakit --}}
                   <div class="card card-default">
                     <div class="card-header">
                       <h3 class="card-title">Tambah Data Penyakit</h3>
@@ -147,7 +146,6 @@
                                 </div>                              
                               </div>
                             </div>
-                            {{-- input saran dokter --}}
                             <div class="form-group row">
                               <div class="col">
                                 <label for="saranDokter" class="">Saran Dokter</label>
@@ -278,16 +276,14 @@
                                             <span aria-hidden="true">&times;</span>
                                           </button>
                                         </div>
-                                        <div class="modal-body ">
+                                        <div class="modal-body">
                                           <form action="/admin/data-penyakit/edit" method="post">
                                             @method('PATCH')
                                             @csrf
-                                            {{-- edit ID penyakit --}}
                                             <input id="editIdPenyakit" type="text" class="form-control d-none @error('id') is-invalid @enderror" name="id" value="{{ old('id') }}" required autocomplete="id" autofocus>
-                                            {{-- edit nama penyakit --}}
-                                            <div class="row form-group">
+                                            <div class="form-group row">
                                               <div class="col">
-                                                <label for="editNamaPenyakit" class="">Nama Penyakit</label>
+                                                <label for="editNamaPenyakit" class="form-label">Nama Penyakit</label>
                                                 <input id="editNamaPenyakit" type="text" class="form-control @error('namaPenyakit') is-invalid @enderror" name="namaPenyakit" value="{{ old('namaPenyakit') }}" required autocomplete="namaPenyakit" autofocus>
                                                 @error('namaPenyakit')
                                                     <span class="invalid-feedback" role="alert">
@@ -296,70 +292,68 @@
                                                 @enderror
                                               </div>
                                             </div>
-                                            {{-- edit gejala1 --}}
-                                            <div class="row form-group">
-                                              <div class="col">
-                                                <label class="">Gejala 1</label>
-                                                <div class="select2-primary">
-                                                  <select class="select2" name="gejala1[]" id="editGejala1" multiple="multiple" data-placeholder="Pilih gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
-                                                    @foreach ($data['dataGejala'] as $item)
-                                                    <option value="{{ $item->gejala }}">{{$item->gejala }}</option>
-                                                    @endforeach
-                                                  </select>
-                                                </div>                              
-                                              </div>
-                                            </div>
-                                            {{-- edit gejala2 --}}
-                                            <div class="row form-group">
-                                              <div class="col">
-                                                <label class="">Gejala 2</label>
-                                                <div class="select2-primary">
-                                                  <select class="select2" name="gejala2[]" id="editGejala2" multiple="multiple" data-placeholder="Pilih gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
-                                                    @foreach ($data['dataGejala'] as $item)
-                                                    <option value="{{ $item->gejala }}">{{$item->gejala }}</option>
-                                                    @endforeach
-                                                  </select>
-                                                </div>                              
-                                              </div>
-                                            </div>
-                                            {{-- edit gejala3 --}}
-                                            <div class="row form-group">
-                                              <div class="col">
-                                                <label class="">Gejala 3</label>
-                                                <div class="select2-primary">
-                                                  <select class="select2" name="gejala3[]" id="editGejala3" multiple="multiple" data-placeholder="Pilih gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
-                                                    @foreach ($data['dataGejala'] as $item)
-                                                    <option value="{{ $item->gejala }}">{{$item->gejala }}</option>
-                                                    @endforeach
-                                                  </select>
-                                                </div>                              
-                                              </div>
-                                            </div>
-                                            {{-- edit gejala4 --}}
-                                            <div class="row form-group">
-                                              <div class="col">
-                                                <label class="">Gejala 4</label>
-                                                <div class="select2-primary">
-                                                  <select class="select2" name="gejala4[]" id="editGejala4" multiple="multiple" data-placeholder="Pilih gejala yang tersedia" data-dropdown-css-class="select2-primary" style="width: 100%;">
-                                                    @foreach ($data['dataGejala'] as $item)
-                                                    <option value="{{ $item->gejala }}">{{$item->gejala }}</option>
-                                                    @endforeach
-                                                  </select>
-                                                </div>                              
-                                              </div>
-                                            </div>
-                                            {{-- edit saran dokter --}}
+                                  
                                             <div class="form-group row">
                                               <div class="col">
-                                                <label for="editSaranDokter" class="">Saran Dokter</label>
-                                                  <textarea id="editSaranDokter" name="saranDokter" rows="6" class="form-control @error('saranDokter') is-invalid @enderror" name="saranDokter" value="{{ old('saranDokter') }}" required autocomplete="saranDokter"></textarea>
-                                                  @error('saranDokter')
-                                                      <span class="invalid-feedback" role="alert">
-                                                          <strong>{{ $message }}</strong>
-                                                      </span>
-                                                  @enderror
+                                                <label for="editGejala1" class="form-label">Gejala 1</label>
+                                                <input id="editGejala1" type="text" class="form-control @error('gejala1') is-invalid @enderror" name="gejala1" value="{{ old('gejala1') }}" required autocomplete="gejala1">
+                              
+                                                @error('gejala1')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                               </div>
-                                            </div>                  
+                                            </div>
+                                            <div class="form-group row">
+                                              <div class="col">
+                                                <label for="editGejala2" class="form-label">Gejala 2</label>
+                                  
+                                                <input id="editGejala2" type="text" class="form-control @error('gejala2') is-invalid @enderror" name="gejala2" value="{{ old('gejala2') }}" required autocomplete="gejala2">
+                              
+                                                @error('gejala2')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                              </div>
+                                            </div>
+                                            <div class="form-group row">
+                                              <div class="col">
+                                                <label for="editGejala3" class="form-label">Gejala 3</label>
+                                                <input id="editGejala3" type="text" class="form-control @error('gejala3') is-invalid @enderror" name="gejala3" value="{{ old('gejala3') }}" required autocomplete="gejala3">
+                              
+                                                @error('gejala3')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                              </div>
+                                            </div>
+                                            <div class="form-group row">
+                                              <div class="col">
+                                                <label for="editGejala4" class="form-label">Gejala 4</label>
+                                                <input id="editGejala4" type="text" class="form-control @error('gejala4') is-invalid @enderror" name="gejala4" value="{{ old('gejala4') }}" required autocomplete="gejala4">
+                              
+                                                @error('gejala4')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                              </div>
+                                            </div>
+                                            <div class="form-group row">
+                                              <div class="col">
+                                                <label for="editSaranDokter" class="form-label">Saran Dokter</label>
+                                                <textarea id="editSaranDokter" rows="16" class="form-control @error('saranDokter') is-invalid @enderror" name="saranDokter" value="{{ old('saranDokter') }}" required autocomplete="saranDokter"></textarea>
+                              
+                                                @error('saranDokter')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                              </div>
+                                            </div>
                                   
                                             <div class="col-md-6 offset-md-4">
                                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

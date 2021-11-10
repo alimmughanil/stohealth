@@ -40,14 +40,19 @@ class HomeController extends Controller
         }
         else{
             $findUser = User::where('email',$request->email)->first();
-            if (Hash::check($request->oldpassword, $findUser->password)) {                
-                $updatePassword = $findUser->update([
-                    'password' => Hash::make($request->newpassword)
-                ]);
-                return redirect('/login')->with('success','Reset password berhasil');
+            if ($findUser !== null) {                
+                if (Hash::check($request->oldpassword, $findUser->password)) {                
+                    $updatePassword = $findUser->update([
+                        'password' => Hash::make($request->newpassword)
+                    ]);
+                    return redirect('/login')->with('success','Reset password berhasil');
+                }
+                else {
+                    return redirect('/resetpass')->with('error','Reset password gagal. Password lama tidak sesuai dengan yang ada di database');
+                }   
             }
             else{
-                return redirect('/resetpass')->with('error','Reset password gagal. Password lama tidak sesuai dengan yang ada di database');
+                return redirect('/resetpass')->with('error','Reset password gagal. Email belum terdaftar');                    
             }
         }
     }

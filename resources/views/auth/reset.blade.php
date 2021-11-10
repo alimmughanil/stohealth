@@ -14,9 +14,9 @@
           </div>
           <div class="col-lg-5">
               <div class="card-body">
-                <h3 class="card-title text-center mb-4">Reset Password</h3>
+                <h3 class="card-title text-center mb-2">Reset Password</h3>
                 @if (session()->has('error'))
-                <div class="text-white text-small text-center bg-danger" role="alert">
+                <div class="alert alert-danger mb-2" role="alert">
                     {{ session('error') }}
                 </div>
                 @endif
