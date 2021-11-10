@@ -1,0 +1,35 @@
+  .login {
+    min-height: 100vh;
+  }
+  
+  .bg-image {
+    background-image: '../stohealthh.png';
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .login-heading {
+    font-weight: 300;
+  }
+  .login-heading2 {
+    font: 0.9rem/1.5 var(--bs-font-sans-serif);
+    color: grey;
+  }
+  .btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    width: 100%;
+    }
+
+.form-login{
+  border-radius: 2rem;
+  font: 0.9rem/1.5 var(--bs-font-sans-serif);
+}
+.card-title {
+  font: 1.5rem/1.5 var(--bs-font-sans-serif);
+  color: grey;
+}
+.img {height: 100%;
+}

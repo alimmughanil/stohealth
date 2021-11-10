@@ -18,12 +18,16 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
-
+Route::get('/resetpass', function () {
+    return view('auth.reset');
+});
+Route::post('/resetpass', [HomeController::class, 'resetpass']);
+Route::post('/feedback', [HomeController::class, 'feedback']);
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index']);
 Route::group(['middleware' => ['Admin']], function () {    
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/admin/data-pengguna', [AdminController::class, 'showUser']);

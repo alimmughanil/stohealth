@@ -134,27 +134,27 @@
                           @csrf
                           <div class="form-group">
                               <label for="nama">Nama</label>
-                              <input type="text" class="form-control" id="nama" name="name">
+                              <input type="text" class="form-control" id="nama" name="name" required>
                           </div>
                           <div class="form-group">
                               <label for="emailUser">Email</label>
-                              <input type="text" class="form-control" id="emailUser" name="email" readonly>
+                              <input type="text" class="form-control" id="emailUser" name="email" readonly required>
                           </div>
                           <div class="form-group">
                               <label for="tempat_lahir">Tempat, Tanggal Lahir</label>
-                              <input type="text" class="form-control" id="tempat_lahir" name="birth_place">
-                              <input type="date" class="form-control" id="tanggal_lahir" name="birth_date">
+                              <input type="text" class="form-control" id="tempat_lahir" name="birth_place" required>
+                              <input type="date" class="form-control" id="tanggal_lahir" name="birth_date" required>
                           </div>
                           <div class="form-group">
                               <label for="gender">Jenis Kelamin</label>
-                              <select class="form-control" name="gender" id="genderEdit">
+                              <select class="form-control" name="gender" id="genderEdit" required>
                                   <option value="Pria">Pria</option>
                                   <option value="Wanita">Wanita</option>
                               </select>
                           </div>
                           <div class="form-group">
                               <label for="alamatUser">Alamat</label>
-                              <input type="text" class="form-control" id="alamatUser" name="address">
+                              <input type="text" class="form-control" id="alamatUser" name="address" required>
                           </div>
                           </div>
                           <div class="modal-footer">

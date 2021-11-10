@@ -45,7 +45,6 @@ class DatabaseSeeder extends Seeder
             'kesulitan menelan',
             'cepat kenyang',
             'kehilangan nafsu makan',
-            'nyeri perut',
             'rasa perih pada perut',
             'bab berdarah',
             'badan cepat lelah',
@@ -92,8 +91,8 @@ Pengobatan:
 antasida, PPI (Proton Pump Inhibitor) seperti, omeprazol, lansoprazol, dan Penghambat reseptor H2 seperti Ranitidin, dan prokinetik seperti domperidon',]);
         DataPenyakit::create([
             'nama_penyakit' => 'Kolik Abdomen',
-            'gejala1' => 'mules, sendawa berlebih, mual',
-            'gejala2' => 'susah bab, rasa perih pada perut, bab berdarah',            
+            'gejala1' => 'mual, mules, sendawa berlebih',
+            'gejala2' => 'rasa perih pada perut, susah bab, bab berdarah',            
             'gejala3' => 'tinja berwarna gelap, muntah',            
             'gejala4' => 'muntah darah',
             'saran_dokter' => 
@@ -110,9 +109,9 @@ koreksi dehidrasi, beri obat nyeri (Asam Mefenamat), bila tidak membaik, Segera 
 
         DataPenyakit::create([
             'nama_penyakit' => 'Kanker Lambung',
-            'gejala1' => 'mules, kembung, demam, pembengkakan di area perut, mual',
-            'gejala2' => 'penurunan berat badan, kesulitan menelan, cepat kenyang, kehilangan nafsu makan',            
-            'gejala3' => 'badan cepat lelah, nyeri dada, tinja berwarna gelap, sesak nafas',            
+            'gejala1' => 'kembung, demam, mual, mules, pembengkakan di area perut',
+            'gejala2' => 'kesulitan menelan, penurunan berat badan, cepat kenyang, kehilangan nafsu makan',            
+            'gejala3' => 'nyeri dada, sesak nafas, tinja berwarna gelap, badan cepat lelah',            
             'gejala4' => 'muntah darah, sakit perut bagian atas (ulu hati), tubuh terasa lemah',
             'saran_dokter' => 
 '1. Rajin Berolahraga, 
@@ -127,8 +126,8 @@ Pengobatan:
 Radioterapi, Kemoterapi, dan Operasi.',]);
         DataPenyakit::create([
             'nama_penyakit' => 'Appendicitis',
-            'gejala1' => 'mules, sendawa berlebih, diare, pembengkakan di area perut, mual',            
-            'gejala2' => 'kehilangan nafsu makan, nyeri perut',
+            'gejala1' => 'mual, mules, sendawa berlebih, pembengkakan di area perut, diare',            
+            'gejala2' => 'rasa perih pada perut, kehilangan nafsu makan',
             'gejala3' => 'muntah',            
             'gejala4' => 'tidak ada',            
             'saran_dokter' => 
@@ -147,7 +146,7 @@ Pemberian antibiotik seperti metronidazole dan ciprofloxacin, pemberian obat imu
         DataPenyakit::create([
             'nama_penyakit' => 'Gastritis',
             'gejala1' => 'kembung, demam, pembengkakan di area perut',
-            'gejala2' => 'cepat kenyang, kehilangan nafsu makan, nyeri perut',
+            'gejala2' => 'rasa perih pada perut, cepat kenyang, kehilangan nafsu makan',
             'gejala3' => 'tinja berwarna gelap, muntah',
             'gejala4' => 'tubuh terasa lemah, radang lambung',
             'saran_dokter' => 
@@ -164,10 +163,10 @@ Obat Antasida Doen, Obat Ranitidin, Omeprazole, dan Promag.'
 ,]);
         DataPenyakit::create([
             'nama_penyakit' => 'Gastroenteritis',
-            'gejala1' => 'mules, sendawa berlebih, demam, diare',
-            'gejala2' => 'kehilangan nafsu makan, nyeri perut, bab berdarah',
-            'gejala3' => 'badan cepat lelah, muntah',
-            'gejala4' => 'kram perut, tubuh terasa lemah',
+            'gejala1' => 'demam, mules, sendawa berlebih, diare',
+            'gejala2' => 'rasa perih pada perut, bab berdarah, kehilangan nafsu makan',
+            'gejala3' => 'muntah, badan cepat lelah',
+            'gejala4' => 'tubuh terasa lemah, kram perut',
             'saran_dokter' => 
 '1. Mencuci tangan dengan air mengalir dan sabun setiap kali sebelum makan, 
 2. Memilih makanan yang higienis untuk dikonsumsi, 
@@ -180,11 +179,6 @@ Obat Antasida Doen, Obat Ranitidin, Omeprazole, dan Promag.'
 Pengobatan : 
 oralit, obat anti diare seperti loperamide.'
 ,]);
-
-
-
-
-
 
     }
 }

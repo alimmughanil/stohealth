@@ -363,7 +363,7 @@
                                                 <label for="editSaranDokter" class="col-md-4 col-form-label text-md-right">Saran Dokter</label>
                                   
                                                 <div class="col-md-6">
-                                                    <input id="editSaranDokter" type="text" class="form-control @error('saranDokter') is-invalid @enderror" name="saranDokter" value="{{ old('saranDokter') }}" required autocomplete="saranDokter">
+                                                    <textarea id="editSaranDokter" rows="16" class="form-control @error('saranDokter') is-invalid @enderror" name="saranDokter" value="{{ old('saranDokter') }}" required autocomplete="saranDokter"></textarea>
                                   
                                                     @error('saranDokter')
                                                         <span class="invalid-feedback" role="alert">
