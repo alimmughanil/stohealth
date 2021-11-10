@@ -1,32 +1,3 @@
-// kirim feedback di halaman homepage
-const scriptURL =
-    "https://script.google.com/macros/s/AKfycbxk6cybVaqyHuxCTyDMwBDAMWsbqFb9lT3Txwim50NCE1qupdi5_CV5Bh2AsqoZOtiRCw/exec";
-const form = document.forms["web-contact-form"];
-const btnKirim = document.querySelector(".btn-kirim");
-const btnLoading = document.querySelector(".btn-loading");
-const alert = document.querySelector(".alert");
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    // ketika tombol submit di klik
-    // tampilkan tombol loading, hilangkan tombol kirim
-    btnLoading.classList.toggle("d-none");
-    btnKirim.classList.toggle("d-none");
-
-    fetch(scriptURL, { method: "POST", body: new FormData(form) })
-        .then((response) => {
-            // tampilkan tombol kirim, hilangkan tombol loading
-            btnKirim.classList.toggle("d-none");
-            btnLoading.classList.toggle("d-none");
-            //tampilkan Alert
-            alert.classList.toggle("d-none");
-            //reset form
-            form.reset();
-            console.log("Success!", response);
-        })
-        .catch((error) => console.error("Error!", error.message));
-});
-
 //edit data diri pengguna
 $(function () {
     $(".modal-editDataDiriPengguna").on("click", function () {
