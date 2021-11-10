@@ -73,7 +73,6 @@ http://www.tooplate.com/view/2098-health
                               <a href="#top" class="smoothScroll"></a>
                          </li>
                          <li><a href="#about" class="smoothScroll">About Us</a></li>
-                         <li><a href="#news" class="smoothScroll">News</a></li>
                          <li><a href="#appointment"class = "moothScroll">Feedback</a></li>
                          @if (Route::has('login'))
                              @auth
@@ -112,19 +111,9 @@ http://www.tooplate.com/view/2098-health
                               <div class="item item-second">
                                    <div class="caption">
                                         <div class="col-md-offset-1 col-md-10">
-                                             <h3>Happy Stomach Enjoy Life</h3>
-                                             <h1>Stomach News</h1>
-                                             <a href="#about" class="section-btn btn btn-default btn-gray smoothScroll">Read News</a>
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="item item-third">
-                                   <div class="caption">
-                                        <div class="col-md-offset-1 col-md-10">
                                              <h3></h3>
                                              <h1>Calling Me</h1>
-                                             <a href="#news" class="section-btn btn btn-default btn-gray smoothScroll">For call</a>
+                                             <a href="#appointment" class="section-btn btn btn-default btn-gray smoothScroll">For call</a>
                                         </div>
                                    </div>
                               </div>
@@ -157,71 +146,6 @@ http://www.tooplate.com/view/2098-health
                          </div>
                     </div>
                     
-               </div>
-          </div>
-     </section>
-
-
-   
-
-
-     <!-- NEWS -->
-     <section id="news" data-stellar-background-ratio="2.5">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-12 col-sm-12">
-                         <!-- SECTION TITLE -->
-                         <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
-                              <h2>Stomach News</h2>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                         <!-- NEWS THUMB -->
-                         <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
-                              <a href="#topwa">
-                                   <img src="images/news-image1.jpg" class="img-responsive" alt="">
-                              </a>
-                              <div class="news-info">
-                                   <span>March 08, 2021</span>
-                                   <h3><a href="#top">Gastritis</a></h3>
-                                   <p>kelebihan gas karena kadar kafein dan alkohol yang tinggi</p>
-                                   
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                         <!-- NEWS THUMB -->
-                         <div class="news-thumb wow fadeInUp" data-wow-delay="0.6s">
-                              <a href="news-detail.html">
-                                   <img src="images/news-image2.jpg" class="img-responsive" alt="">
-                              </a>
-                              <div class="news-info">
-                                   <span>Agustus 09, 2021</span>
-                                   <h3><a href="#top">Tukak Lambung</a></h3>
-                                   <p>luka pada dinding lambung akibat terkikisnya lapisan lambung</p>
-                                   
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                         <!-- NEWS THUMB -->
-                         <div class="news-thumb wow fadeInUp" data-wow-delay="0.8s">
-                              <a href="news-detail.html">
-                                   <img src="images/news-image3.jpg" class="img-responsive" alt="">
-                              </a>
-                              <div class="news-info">
-                                   <span>Oktober 27, 2021</span>
-                                   <h3><a href="#top">Dispepsia</a></h3>
-                                   <p>Kumpulan gejala yang muncul akibat adanya penyakit di bagian atas perut</p>
-                                   
-                              </div>
-                         </div>
-                    </div>
-
                </div>
           </div>
      </section>
@@ -289,31 +213,6 @@ http://www.tooplate.com/view/2098-health
                               <div class="contact-info">
                                    <p><i class="fa fa-phone"></i> 0212871080</p>
                                    <p><i class="fa fa-envelope-o"></i> <a href="#">stohealth@gmail.com</a></p>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4"> 
-                         <div class="footer-thumb"> 
-                              <h4 class="wow fadeInUp" data-wow-delay="0.4s">Latest News</h4>
-                              <div class="latest-stories">
-                                   <div class="stories-image">
-                                        <a href="#"><img src="images/news-image.jpg" class="img-responsive" alt=""></a>
-                                   </div>
-                                   <div class="stories-info">
-                                        <a href="#"><h5>Tukak Lambung</h5></a>
-                                        <span>Agustus 09, 2021</span>
-                                   </div>
-                              </div>
-
-                              <div class="latest-stories">
-                                   <div class="stories-image">
-                                        <a href="#"><img src="images/news-image.jpg" class="img-responsive" alt=""></a>
-                                   </div>
-                                   <div class="stories-info">
-                                        <a href="#"><h5>Gastriis</h5></a>
-                                        <span>March 08, 2021</span>
-                                   </div>
                               </div>
                          </div>
                     </div>
