@@ -3,7 +3,7 @@ $(function () {
     $(".modal-editDataDiriPengguna").on("click", function () {
         const id = $(this).data("id");
         $.ajax({
-            url: "http://localhost:8000/user/data-diri/getDataUser",
+            url: "http://stohealth.herokuapp.com/user/data-diri/getDataUser",
             data: { id: id },
             method: "get",
             dataType: "json",
@@ -23,7 +23,8 @@ $(function () {
     $(".modal-editDataPengguna").on("click", function () {
         const id = $(this).data("id");
         $.ajax({
-            url: "http://localhost:8000/admin/data-pengguna/getRoleUser",
+            url:
+                "http://stohealth.herokuapp.com/admin/data-pengguna/getRoleUser",
             data: { id: id },
             method: "get",
             dataType: "json",
@@ -39,7 +40,7 @@ $(function () {
     $(".modal-showDataPengguna").on("click", function () {
         const id = $(this).data("id");
         $.ajax({
-            url: "http://localhost:8000/admin/history/getDataUser",
+            url: "http://stohealth.herokuapp.com/admin/history/getDataUser",
             data: { id: id },
             method: "get",
             dataType: "json",
@@ -60,7 +61,8 @@ $(function () {
     $(".modal-getDataPenyakit").on("click", function () {
         const id = $(this).data("id");
         $.ajax({
-            url: "http://localhost:8000/admin/data-penyakit/getDataPenyakit",
+            url:
+                "http://stohealth.herokuapp.com/admin/data-penyakit/getDataPenyakit",
             data: { id: id },
             method: "get",
             dataType: "json",
@@ -82,7 +84,8 @@ $(function () {
     $(".userModal-showSaranDokter").on("click", function () {
         const id = $(this).data("id");
         $.ajax({
-            url: "http://localhost:8000/user/data-pemeriksaan/getSaranDokter",
+            url:
+                "http://stohealth.herokuapp.com/user/data-pemeriksaan/getSaranDokter",
             data: { id: id },
             method: "get",
             dataType: "json",
