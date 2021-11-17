@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('feedback')
+  @include('admin.feedback-navbar')
+@endsection
+
 @section('content') 
  <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">

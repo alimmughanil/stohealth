@@ -9,13 +9,14 @@ use App\Models\DataPemeriksaan;
 use App\Http\Controllers\Controller;
 use App\Models\DataDiri;
 use App\Models\DataGejala;
+use App\Models\Feedback;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-    public function index(User $allUser, DataPenyakit $dataPenyakit, DataPemeriksaan $dataPemeriksaan){
+    public function index(User $allUser, DataPenyakit $dataPenyakit, DataPemeriksaan $dataPemeriksaan, Feedback $feedback){
         $user = Auth::user();
         $data = [
             'title' => 'Dashboard Admin',
@@ -24,20 +25,23 @@ class AdminController extends Controller
             'allUser' => $allUser::all()->count(),
             'dataPenyakit' => $dataPenyakit::all()->count(),
             'dataPemeriksaan' => $dataPemeriksaan::all()->count(),
+            'feedback' => $feedback->latest()->first(),
         ];
+        
         return view('admin.index', compact('data'));
     }
-    public function showUser(User $dataUser){
+    public function showUser(User $dataUser, Feedback $feedback){
         $user = Auth::user();
         $data = [
             'title' => 'Manajemen Pengguna',
             'name' => $user->name,
             'role' => $user->role,
             'dataUser' => $dataUser::all(),
+            'feedback' => $feedback->latest()->first(),
         ];
         return view('admin.data-pengguna', compact('data'));
     }
-    public function showDiagnose(DataPenyakit $dataPenyakit,DataGejala $dataGejala){
+    public function showDiagnose(DataPenyakit $dataPenyakit,DataGejala $dataGejala, Feedback $feedback){
         $user = Auth::user();
         $data = [
             'title' => 'Manajemen Penyakit',
@@ -45,18 +49,31 @@ class AdminController extends Controller
             'role' => $user->role,
             'dataGejala' => $dataGejala::all(),
             'dataPenyakit' => $dataPenyakit::all(),
+            'feedback' => $feedback->latest()->first(),
         ];
         return view('admin.data-penyakit', compact('data'));
     }
-    public function showHistory(DataPemeriksaan $dataPemeriksaan){
+    public function showHistory(DataPemeriksaan $dataPemeriksaan, Feedback $feedback){
         $user = Auth::user();
         $data = [
             'title' => 'Data Pemeriksaan',
             'name' => $user->name,
             'role' => $user->role,
             'dataPemeriksaan' => $dataPemeriksaan::all(),
+            'feedback' => $feedback->latest()->first(),
         ];
         return view('admin.data-pemeriksaan', compact('data'));
+    }
+    public function showFeedback(Feedback $feedback){
+        $user = Auth::user();
+        $data = [
+            'title' => 'Data Feedback',
+            'name' => $user->name,
+            'role' => $user->role,
+            'feedback' => $feedback->latest()->first(),
+            'dataFeedback' => $feedback::all(),
+        ];
+        return view('admin.data-feedback', compact('data'));
     }
 
     public function storeUser(Request $request){
@@ -145,6 +162,11 @@ class AdminController extends Controller
         $getData = $user->firstWhere('id', $id) ;
         echo json_encode($getData);
     }
+    public function getFeedback(Feedback $feedback){
+        $id =  $_GET['id'];
+        $getData = $feedback->firstWhere('id', $id) ;
+        echo json_encode($getData);
+    }
 
     public function updatePenyakit(Request $request, DataPenyakit $dataPenyakit){
         $id = $request->id;
@@ -182,4 +204,5 @@ class AdminController extends Controller
         $delete = $getdataPenyakit->delete();
         return redirect('admin/data-penyakit')->with('success','Hapus data penyakit berhasil');;
     }
+    
 }

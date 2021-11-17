@@ -98,3 +98,18 @@ $(function () {
         });
     });
 });
+//show all feedback
+$(function () {
+    $(".modal-feedbackFeedback").on("click", function () {
+        const id = $(this).data("id");
+        $.ajax({
+            url: "http://localhost:8000/admin/getFeedback",
+            data: { id: id },
+            method: "get",
+            dataType: "json",
+            success: function (data) {
+                $("#feedbackMessages").val(data.message);
+            },
+        });
+    });
+});

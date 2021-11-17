@@ -16,12 +16,12 @@ class UserController extends Controller
     public function index(DataDiri $dataDiri, DataPenyakit $dataPenyakit, DataPemeriksaan $dataPemeriksaan){
         $user = Auth::user();
         $kelengkapanDataDiri = $dataDiri->firstWhere('user_id', $user->id);
-        $cekdataPemeriksaan = $dataPemeriksaan->firstWhere('user_id', $user->id);
+        $cekdataPemeriksaan = $dataPemeriksaan->where('user_id', $user->id)->count();
         if (empty($cekdataPemeriksaan)) {
             $total = '0';
         }
         elseif (!empty($cekdataPemeriksaan)) {
-            $totalPemeriksaan = $cekdataPemeriksaan->count();
+            $totalPemeriksaan = $cekdataPemeriksaan;
             $total = $totalPemeriksaan;
         }
         if (!empty($kelengkapanDataDiri)) {
@@ -105,11 +105,12 @@ class UserController extends Controller
     }
     public function showHistory(DataPemeriksaan $dataPemeriksaan){
         $user = Auth::user();
+        $cekdataPemeriksaan = $dataPemeriksaan->where('user_id', $user->id)->get();
         $data = [
             'title' => 'Data Pemeriksaan',
             'name' => $user->name,
             'role' => $user->role,
-            'dataPemeriksaan' => $dataPemeriksaan::all(),
+            'dataPemeriksaan' => $cekdataPemeriksaan,
         ];
 
         return view('user.data-pemeriksaan', compact('data'));
