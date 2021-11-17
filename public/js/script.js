@@ -106,7 +106,7 @@ $(function () {
     $(".modal-feedbackFeedback").on("click", function () {
         const id = $(this).data("id");
         $.ajax({
-            url: "http://localhost:8000/admin/getFeedback",
+            url: "http://stohealth.herokuapp.com/admin/getFeedback",
             data: { id: id },
             method: "get",
             dataType: "json",
