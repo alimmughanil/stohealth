@@ -6,6 +6,7 @@
       <a href="{{ url('/admin/data-feedback') }}" class="dropdown-item">
         <!-- Message Start -->
         <div class="media">
+          <img src="/img/undraw_profile.svg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
           <div class="media-body">
             @if (empty($data['feedback']))
               <p class="text-sm">No data available to show</p>
