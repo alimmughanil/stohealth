@@ -7,11 +7,15 @@
         <!-- Message Start -->
         <div class="media">
           <div class="media-body">
-            <h3 class="dropdown-item-title">
-              {{ $data['feedback']->name }}
-            </h3>
-            <p class="text-sm">{{ $data['feedback']->message }}</p>
-            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> {{ $data['feedback']->created_at }}</p>
+            @if (empty($data['feedback']))
+              <p class="text-sm">No data available to show</p>
+            @else                
+              <h3 class="dropdown-item-title">
+                {{ $data['feedback']->name }}
+              </h3>
+              <p class="text-sm">{{ $data['feedback']->message }}</p>
+              <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> {{ $data['feedback']->created_at }}</p>
+            @endif
           </div>
         </div>
         <!-- Message End -->
