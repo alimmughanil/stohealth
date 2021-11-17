@@ -176,19 +176,19 @@ http://www.tooplate.com/view/2098-health
                                    @csrf
                                    <div class="col-md-6 col-sm-6">
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
                                    </div>
 
                                    <div class="col-md-6 col-sm-6">
                                         <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
                                    </div>
 
                                    <div class="col-md-12 col-sm-12">
                                         <label for="telephone">Phone Number</label>
-                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone">
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone" required>
                                         <label for="Message">Additional Message</label>
-                                        <textarea class="form-control" rows="5" id="message" name="message" placeholder="Message"></textarea>
+                                        <textarea class="form-control" rows="5" id="message" name="message" placeholder="Message" required></textarea>
                                         <button type="submit" class="form-control" id="cf-submit" name="submit">Submit Button</button>
                                    </div>
                               </div>
