@@ -1,3 +1,7 @@
+<strong>Deployment Website</strong> <br>
+http://stohealth.herokuapp.com/
+<br>
+<br>
 <strong>Installation Tutorial</strong>
 
 Pertama, persiapan instalasi
