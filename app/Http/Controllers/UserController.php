@@ -61,7 +61,7 @@ class UserController extends Controller
                 'title' => 'Data Diri',
                 'user_id' => $user->id,
                 'role' => $user->role,
-                'name' => $user->name,
+                'name' => $getDataDiri->name,
                 'email' => $user->email,
                 'birth_place' => $getDataDiri->birth_place,
                 'birth_date' => $getDataDiri->birth_date,
