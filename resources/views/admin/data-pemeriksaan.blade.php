@@ -57,7 +57,7 @@
                             <td>{{ $history['indikasi_penyakit'] }}</td>
                             <td>{{ $history['created_at'] }}</td>
                             <td class="d-flex justify-content-center">
-                              <button type="button" class="btn btn-sm btn-primary modal-showDataPengguna" data-toggle="modal" data-target="#modal-dataPengguna" data-id="{{ $history['id'] }}">
+                              <button type="button" class="btn btn-sm btn-primary modal-showDataPengguna" data-toggle="modal" data-target="#modal-dataPengguna" data-id="{{ $history['user_id'] }}">
                                 Lihat
                               </button>
                               <div class="modal fade" id="modal-dataPengguna">

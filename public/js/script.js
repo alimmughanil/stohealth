@@ -45,7 +45,13 @@ $(function () {
             method: "get",
             dataType: "json",
             success: function (data) {
-                console.log(id);
+                console.log(data);
+                $("#showName").val(data.name);
+                $("#showEmail").val(data.email);
+                $("#showBirthPlace").val(data.birth_place);
+                $("#showBirthDate").val(data.birth_date);
+                $("#showGender").val(data.gender);
+                $("#showAddress").val(data.address);
             },
         });
     });
