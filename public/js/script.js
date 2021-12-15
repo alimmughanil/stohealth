@@ -45,7 +45,7 @@ $(function () {
             method: "get",
             dataType: "json",
             success: function (data) {
-                console.log(data);
+                console.log(id);
             },
         });
     });
