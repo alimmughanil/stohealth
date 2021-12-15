@@ -6,10 +6,12 @@
       <a href="{{ url('/admin/data-feedback') }}" class="dropdown-item">
         <!-- Message Start -->
         <div class="media">
-          <div class="media-body">
-            @if (empty($data['feedback']))
+          @if (empty($data['feedback']))
+            <div class="media-body">
               <p class="text-sm">No data available to show</p>
             @else                
+            <img src="/img/undraw_profile.svg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+            <div class="media-body">
               <h3 class="dropdown-item-title">
                 {{ $data['feedback']->name }}
               </h3>
